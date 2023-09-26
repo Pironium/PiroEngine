@@ -1,0 +1,35 @@
+# Файл: polygon_enhancement.pis
+
+# Импортируем библиотеки для нейросети
+import tensorflow as tf
+from tensorflow import keras
+
+# Определяем функцию для улучшения полигонов
+def enhance_polygons(polygons):
+    # Создаем модель нейросети для улучшения полигонов
+    model = keras.Sequential([
+        keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same', input_shape=(256, 256, 3)),
+        keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
+        keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'),
+        keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
+        keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'),
+        keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'),
+        keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'),
+        keras.layers.Conv2D(3, (3, 3), activation='linear', padding='same'),
+    ])
+
+    # Компилируем модель
+    model.compile(optimizer='adam', loss='mean_squared_error')
+
+    # Обучаем модель на входных данных с полигонами
+    model.fit(polygons, polygons, epochs=10, batch_size=32)
+
+    # Применяем модель для улучшения полигонов
+    enhanced_polygons = model.predict(polygons)
+
+    return enhanced_polygons
+
+# Пример использования функции
+input_polygons = load_polygons_from_file("input_polygons.ply")
+enhanced_polygons = enhance_polygons(input_polygons)
+save_polygons_to_file("enhanced_polygons.ply", enhanced_polygons)
