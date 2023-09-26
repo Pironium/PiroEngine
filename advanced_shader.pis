@@ -1,0 +1,8 @@
+# Advanced Shader for PiroEngine
+
+This advanced shader module for PiroEngine allows developers to create stunning visual effects in their games. It introduces several unique features commonly found in 3D engines.
+
+## Features:
+
+1. **Parallax Mapping**: Achieve realistic surface details with parallax mapping. This technique provides the illusion of depth and adds complexity to surfaces.
+
