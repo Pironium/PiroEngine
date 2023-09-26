@@ -1,0 +1,53 @@
+# PiroEngine Graphics Optimizations for Nvidia and AMD GPUs
+
+# Include necessary libraries
+include Graphics.pis
+include PiroScriptUtils.pis
+
+# Define a function to optimize graphics for Nvidia GPUs
+function optimizeForNvidia(graphicsSettings: GraphicsSettings) {
+    if (getGPUVendor() == "Nvidia") {
+        graphicsSettings.setAntialiasingLevel(4)  # Increase anti-aliasing for Nvidia GPUs
+        graphicsSettings.setShadowQuality(3)       # Set higher shadow quality for Nvidia GPUs
+        graphicsSettings.setTextureQuality(2)      # Adjust texture quality for Nvidia GPUs
+        graphicsSettings.setShaderQuality(2)       # Optimize shaders for Nvidia GPUs
+    }
+}
+
+# Define a function to optimize graphics for AMD GPUs
+function optimizeForAmd(graphicsSettings: GraphicsSettings) {
+    if (getGPUVendor() == "AMD") {
+        graphicsSettings.setAntialiasingLevel(2)  # Adjust anti-aliasing for AMD GPUs
+        graphicsSettings.setShadowQuality(2)       # Set shadow quality for AMD GPUs
+        graphicsSettings.setTextureQuality(1)      # Lower texture quality for AMD GPUs
+        graphicsSettings.setShaderQuality(1)       # Optimize shaders for AMD GPUs
+    }
+}
+
+# Main function to apply GPU-specific optimizations
+function applyGPUSpecificOptimizations(graphicsSettings: GraphicsSettings) {
+    if (getGPUVendor() == "Nvidia") {
+        optimizeForNvidia(graphicsSettings)
+    } else if (getGPUVendor() == "AMD") {
+        optimizeForAmd(graphicsSettings)
+    } else {
+        # Default settings for other GPU vendors
+        graphicsSettings.setDefaultQualitySettings()
+    }
+}
+
+# Entry point for applying graphics optimizations
+function main() {
+    graphicsSettings = getGraphicsSettings()
+
+    # Apply GPU-specific optimizations
+    applyGPUSpecificOptimizations(graphicsSettings)
+
+    # Save the updated graphics settings
+    graphicsSettings.saveSettings()
+
+    print("Graphics settings optimized for your GPU.")
+}
+
+# Call the main function to apply optimizations
+main()
