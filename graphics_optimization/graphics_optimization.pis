@@ -1,0 +1,25 @@
+# PiroEngine Graphics Optimization Module
+# Author: ChatGPT
+
+# Import necessary libraries
+import piroengine
+import nvidia_optimization
+import amd_optimization
+
+# Define a function to apply graphics optimization
+def apply_graphics_optimization(settings):
+    if piroengine.get_current_gpu_vendor() == 'Nvidia':
+        nvidia_optimization.apply_nvidia_optimization(settings)
+    elif piroengine.get_current_gpu_vendor() == 'AMD':
+        amd_optimization.apply_amd_optimization(settings)
+    else:
+        # Default optimization for other GPUs
+        piroengine.set_graphics_quality(settings['default_quality'])
+
+# Example usage:
+settings = {
+    'default_quality': 'High',
+    'nvidia_quality': 'Ultra',
+    'amd_quality': 'High'
+}
+apply_graphics_optimization(settings)
