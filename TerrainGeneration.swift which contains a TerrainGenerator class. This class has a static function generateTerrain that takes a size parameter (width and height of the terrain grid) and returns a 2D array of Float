@@ -1,0 +1,19 @@
+// TerrainGeneration.swift
+
+import Foundation
+
+class TerrainGenerator {
+    
+    static func generateTerrain(size: (width: Int, height: Int)) -> [[Float]] {
+        var terrain = Array(repeating: Array(repeating: Float(0), count: size.width), count: size.height)
+        
+        for i in 0..<size.height {
+            for j in 0..<size.width {
+                terrain[i][j] = Float(sin(Double(i) * 0.1) + cos(Double(j) * 0.1)) // Unique terrain generation algorithm
+            }
+        }
+        
+        return terrain
+    }
+    
+}
