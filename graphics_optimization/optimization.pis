@@ -1,0 +1,42 @@
+# PiroScript (.pis) код для оптимизации графики под Nvidia и AMD
+
+# Импортируем необходимые библиотеки
+import piroengine
+
+# Функция для оптимизации графики для Nvidia
+def optimize_for_nvidia(graphics_settings):
+    if piroengine.get_gpu_vendor() == "Nvidia":
+        # Настройка параметров графики для Nvidia
+        graphics_settings.texture_quality = "high"
+        graphics_settings.shadow_quality = "high"
+        graphics_settings.antialiasing = "2x"
+        graphics_settings.post_processing = "medium"
+        graphics_settings.vsync = "on"
+
+# Функция для оптимизации графики для AMD
+def optimize_for_amd(graphics_settings):
+    if piroengine.get_gpu_vendor() == "AMD":
+        # Настройка параметров графики для AMD
+        graphics_settings.texture_quality = "medium"
+        graphics_settings.shadow_quality = "low"
+        graphics_settings.antialiasing = "off"
+        graphics_settings.post_processing = "low"
+        graphics_settings.vsync = "off"
+
+# Основная функция для выбора оптимизации в зависимости от видеокарты
+def optimize_graphics(graphics_settings):
+    if piroengine.get_gpu_vendor() == "Nvidia":
+        optimize_for_nvidia(graphics_settings)
+    elif piroengine.get_gpu_vendor() == "AMD":
+        optimize_for_amd(graphics_settings)
+    else:
+        # Если не удалось определить видеокарту, используем средние настройки
+        graphics_settings.texture_quality = "medium"
+        graphics_settings.shadow_quality = "medium"
+        graphics_settings.antialiasing = "2x"
+        graphics_settings.post_processing = "medium"
+        graphics_settings.vsync = "on"
+
+# Применяем оптимизацию к текущим настройкам графики
+current_graphics_settings = piroengine.get_graphics_settings()
+optimize_graphics(current_graphics_settings)
