@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+// Define a function for Nvidia GPU optimization
+void NvidiaOptimization() {
+    // Implement Nvidia-specific optimization here
+    std::cout << "Nvidia GPU optimization applied" << std::endl;
+}
+
+// Define a function for AMD GPU optimization
+void AmdOptimization() {
+    // Implement AMD-specific optimization here
+    std::cout << "AMD GPU optimization applied" << std::endl;
+}
+
+int main() {
+    std::string selectedGpu = "Nvidia"; // Replace with actual GPU detection logic
+
+    if (selectedGpu == "Nvidia") {
+        NvidiaOptimization();
+    } else if (selectedGpu == "AMD") {
+        AmdOptimization();
+    } else {
+        std::cerr << "Unsupported GPU type" << std::endl;
+    }
+
+    return 0;
+}
