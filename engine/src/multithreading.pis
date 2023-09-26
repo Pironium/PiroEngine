@@ -1,0 +1,40 @@
+# В этом файле определяем функцию для многозадачности
+
+# Функция для выполнения задачи в многозадачном режиме
+def multitask(task: function, num_threads: int):
+    # Создаем массив потоков
+    threads = [Thread() for _ in range(num_threads)]
+
+    # Функция, которая будет выполняться в каждом потоке
+    def thread_task(thread_id: int):
+        while True:
+            # Получаем задачу из очереди задач
+            task_to_execute = task_queue.get()
+            if task_to_execute is None:
+                break
+
+            # Выполняем задачу в текущем потоке
+            task_to_execute(thread_id)
+
+    # Запускаем потоки
+    for i, thread in enumerate(threads):
+        thread.start(thread_task, i)
+
+    # Ожидаем завершения всех потоков
+    for thread in threads:
+        thread.join()
+
+# Очередь задач для многозадачности
+task_queue = Queue()
+
+# Пример использования функции
+def main():
+    # Здесь можно добавить задачи в очередь для многозадачного выполнения
+    for i in range(10):
+        task_queue.put(task_to_execute)
+
+    # Запускаем многозадачное выполнение
+    multitask(task_to_execute, num_threads=4)
+
+if __name__ == "__main__":
+    main()
