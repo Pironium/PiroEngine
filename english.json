@@ -1,0 +1,52 @@
+{
+  "engine": "PiroEngine",
+  "version": "1.0",
+  "description": "PiroEngine translation file for English language",
+  "features": {
+    "3d_rendering": true,
+    "physically_based_rendering": true,
+    "real-time_physics_simulation": true,
+    "multi-platform_support": true,
+    "cross-language_support": true,
+    "integrated_AI_module": true
+  },
+  "interface": {
+    "main_menu": "Main Menu",
+    "settings": "Settings",
+    "graphics": "Graphics",
+    "audio": "Audio",
+    "language": "Language",
+    "exit": "Exit",
+    "game_title": "PiroEngine - Game Development Platform",
+    "loading": "Loading...",
+    "loading_complete": "Loading Complete",
+    "new_project": "New Project",
+    "open_project": "Open Project",
+    "create_scene": "Create Scene",
+    "save_scene": "Save Scene",
+    "play_scene": "Play Scene",
+    "stop_scene": "Stop Scene",
+    "project_settings": "Project Settings",
+    "editor": "Editor",
+    "scene": "Scene",
+    "assets": "Assets",
+    "build": "Build",
+    "help": "Help",
+    "about": "About"
+  },
+  "messages": {
+    "welcome_message": "Welcome to PiroEngine!",
+    "loading_error": "An error occurred while loading the project.",
+    "save_success": "Project saved successfully.",
+    "save_error": "Failed to save the project.",
+    "play_scene": "Playing the scene...",
+    "stop_scene": "Stopping the scene...",
+    "scene_not_found": "Scene not found.",
+    "invalid_input": "Invalid input. Please check your settings.",
+    "project_settings_saved": "Project settings saved successfully.",
+    "project_settings_error": "Failed to save project settings.",
+    "exit_confirmation": "Are you sure you want to exit?",
+    "exit_message": "Thank you for using PiroEngine!",
+    "about_message": "PiroEngine - Game Development Platform\nVersion: 1.0\nDeveloped by Pironium"
+  }
+}
