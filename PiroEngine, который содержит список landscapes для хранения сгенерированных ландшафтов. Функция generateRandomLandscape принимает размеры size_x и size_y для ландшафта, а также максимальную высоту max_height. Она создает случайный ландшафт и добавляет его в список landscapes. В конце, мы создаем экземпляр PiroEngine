@@ -1,0 +1,21 @@
+# landscape_generator.py
+
+import random
+
+class PiroEngine:
+    def __init__(self):
+        self.landscapes = []
+
+    def generateRandomLandscape(self, size_x, size_y, max_height):
+        landscape = [[random.randint(0, max_height) for _ in range(size_x)] for _ in range(size_y)]
+        self.landscapes.append(landscape)
+        return landscape
+
+if __name__ == "__main__":
+    engine = PiroEngine()
+    landscape1 = engine.generateRandomLandscape(100, 100, 50)
+    landscape2 = engine.generateRandomLandscape(200, 200, 75)
+
+    print("Generated Landscapes:")
+    print(landscape1)
+    print(landscape2)
