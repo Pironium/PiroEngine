@@ -1,0 +1,26 @@
+unit byte_manipulation;
+
+interface
+
+uses
+  SysUtils;
+
+// Функция ManipulateBytes принимает на вход массив байтов data и выполняет уникальные манипуляции с байтами
+function ManipulateBytes(data: array of Byte): TBytes;
+
+implementation
+
+function ManipulateBytes(data: array of Byte): TBytes;
+var
+  i: Integer;
+begin
+  SetLength(Result, Length(data));
+
+  for i := 0 to High(data) do
+  begin
+    // Уникальная манипуляция с байтами: инвертирование битов
+    Result[i] := not data[i];
+  end;
+end;
+
+end.
