@@ -1,0 +1,36 @@
+# PiroScript Code for GPU Optimization in PiroEngine
+
+# Import necessary libraries
+import piro_graphics as pg
+import piro_system as ps
+
+# Define a function to optimize GPU rendering for Nvidia cards
+def optimize_for_nvidia():
+    # Check if the current GPU is Nvidia
+    if pg.get_gpu_vendor() == 'Nvidia':
+        # Set Nvidia-specific GPU optimization parameters
+        pg.set_gpu_parameter('nvidia_optimization', True)
+        pg.set_render_quality('high')
+        ps.log_info('Optimized for Nvidia GPUs')
+
+# Define a function to optimize GPU rendering for AMD cards
+def optimize_for_amd():
+    # Check if the current GPU is AMD
+    if pg.get_gpu_vendor() == 'AMD':
+        # Set AMD-specific GPU optimization parameters
+        pg.set_gpu_parameter('amd_optimization', True)
+        pg.set_render_quality('high')
+        ps.log_info('Optimized for AMD GPUs')
+
+# Main function to apply GPU optimizations based on the detected vendor
+def apply_gpu_optimizations():
+    vendor = pg.get_gpu_vendor()
+    if vendor == 'Nvidia':
+        optimize_for_nvidia()
+    elif vendor == 'AMD':
+        optimize_for_amd()
+    else:
+        ps.log_warning('GPU vendor not recognized, no specific optimizations applied')
+
+# Entry point for GPU optimization
+apply_gpu_optimizations()
