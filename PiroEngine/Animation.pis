@@ -1,0 +1,39 @@
+// PiroScript (PiroEngine Animation)
+
+// Объявление класса для анимации объектов
+class Animation {
+    let duration: Double // Длительность анимации в секундах
+    let keyframes: [Keyframe] // Список ключевых кадров
+    
+    init(duration: Double, keyframes: [Keyframe]) {
+        self.duration = duration
+        self.keyframes = keyframes
+    }
+    
+    // Метод для применения анимации к объекту
+    func apply(to object: GameObject) {
+        // Логика применения анимации
+        // Интерполяция между ключевыми кадрами и т.д.
+    }
+}
+
+// Структура для представления ключевых кадров
+struct Keyframe {
+    let time: Double // Время, на которое устанавливается кадр
+    let position: Vector3 // Позиция объекта на кадре
+    let rotation: Quaternion // Поворот объекта на кадре
+    let scale: Vector3 // Масштаб объекта на кадре
+}
+
+// Пример использования анимации
+let keyframes = [
+    Keyframe(time: 0.0, position: Vector3(x: 0, y: 0, z: 0), rotation: Quaternion.identity, scale: Vector3(x: 1, y: 1, z: 1)),
+    Keyframe(time: 1.0, position: Vector3(x: 10, y: 5, z: 0), rotation: Quaternion(angle: 45, axis: Vector3(x: 0, y: 1, z: 0)), scale: Vector3(x: 2, y: 2, z: 2)),
+    // Добавьте другие ключевые кадры по необходимости
+]
+
+let animation = Animation(duration: 2.0, keyframes: keyframes)
+
+// Применяем анимацию к объекту
+let gameObj = GameObject()
+animation.apply(to: gameObj)
