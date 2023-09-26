@@ -1,0 +1,31 @@
+# Функция для загрузки плагина
+function load_plugin(plugin_name)
+    # Загрузка и инициализация плагина
+    plugin = import(plugin_name)
+    if plugin.initialize() then
+        print("Plugin '" + plugin_name + "' успешно загружен.")
+    else
+        print("Ошибка при загрузке плагина '" + plugin_name + "'.")
+    end
+end
+
+# Функция для выгрузки плагина
+function unload_plugin(plugin_name)
+    # Выгрузка плагина и освобождение ресурсов
+    plugin = import(plugin_name)
+    if plugin.cleanup() then
+        print("Plugin '" + plugin_name + "' успешно выгружен.")
+    else
+        print("Ошибка при выгрузке плагина '" + plugin_name + "'.")
+    end
+end
+
+# Функция для выполнения действия плагина
+function execute_plugin_action(plugin_name, action)
+    plugin = import(plugin_name)
+    if plugin[action] then
+        plugin[action]()
+    else
+        print("Плагин '" + plugin_name + "' не поддерживает действие '" + action + "'.")
+    end
+end
