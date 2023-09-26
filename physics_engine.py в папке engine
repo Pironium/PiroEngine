@@ -1,0 +1,38 @@
+# engine/physics_engine.py
+
+class PhysicsEngine:
+    def __init__(self):
+        self.gravity = 9.81  # Standard Earth gravity in m/s^2
+        self.objects = []
+
+    def add_object(self, obj):
+        if obj not in self.objects:
+            self.objects.append(obj)
+
+    def remove_object(self, obj):
+        if obj in self.objects:
+            self.objects.remove(obj)
+
+    def apply_gravity(self):
+        for obj in self.objects:
+            obj.apply_force((0, -obj.mass * self.gravity))
+
+    def update(self, delta_time):
+        # Perform physics calculations here
+        for obj in self.objects:
+            obj.update(delta_time)
+
+class PhysicsObject:
+    def __init__(self, mass=1.0):
+        self.mass = mass
+        self.position = (0, 0)
+        self.velocity = (0, 0)
+        self.forces = []
+
+    def apply_force(self, force):
+        self.forces.append(force)
+
+    def update(self, delta_time):
+        # Update position, velocity, and other physics properties
+        # based on applied forces and time
+        pass
