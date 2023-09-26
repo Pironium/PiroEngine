@@ -1,0 +1,33 @@
+// Оптимизация рендеринга под видеокарты NVIDIA и AMD
+
+// Функция для оптимизации рендеринга для видеокарт NVIDIA
+function optimizeForNvidia(renderer) {
+    // Расширенные настройки для NVIDIA
+    renderer.setOption("nvidia_optimization", true);
+    renderer.setOption("nvidia_texture_compression", true);
+    renderer.setOption("nvidia_shader_caching", true);
+}
+
+// Функция для оптимизации рендеринга для видеокарт AMD
+function optimizeForAmd(renderer) {
+    // Расширенные настройки для AMD
+    renderer.setOption("amd_optimization", true);
+    renderer.setOption("amd_texture_compression", true);
+    renderer.setOption("amd_shader_caching", true);
+}
+
+// Главная функция оптимизации рендеринга
+function optimizeRendering(renderer, gpuType) {
+    if (gpuType === "NVIDIA") {
+        optimizeForNvidia(renderer);
+    } else if (gpuType === "AMD") {
+        optimizeForAmd(renderer);
+    } else {
+        console.error("Unsupported GPU type: " + gpuType);
+    }
+}
+
+// Пример использования оптимизации
+const renderer = new PiroRenderer();
+const gpuType = detectGpuType(); // Функция для определения типа видеокарты
+optimizeRendering(renderer, gpuType);
