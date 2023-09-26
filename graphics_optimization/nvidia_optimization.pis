@@ -1,0 +1,31 @@
+# PiroScript code for NVIDIA GPU optimization
+
+function optimizeForNVIDIA(engineSettings, gameSettings):
+    # Check if the game is running on an NVIDIA GPU
+    if engineSettings.gpu_vendor == "NVIDIA":
+        # Apply specific optimizations for NVIDIA GPUs
+        engineSettings.enable_ray_tracing = true
+        engineSettings.enable_dlss = true
+        engineSettings.enable_gameworks = true
+        engineSettings.texture_compression = "NVIDIA_COMPRESS"
+        
+        # Adjust shader settings
+        for shader in engineSettings.shaders:
+            shader.quality = "HIGH"
+            shader.compile_for_nvidia = true
+
+        # Enable multi-threading for CPU
+        engineSettings.enable_multi_threading = true
+        
+        # Update render resolution based on NVIDIA GPU capabilities
+        if engineSettings.gpu_model == "RTX 30 Series":
+            engineSettings.render_resolution = "4K"
+        elif engineSettings.gpu_model == "GTX 16 Series":
+            engineSettings.render_resolution = "1440p"
+        else:
+            engineSettings.render_resolution = "1080p"
+    
+    return engineSettings
+
+# Call the optimization function
+engineSettings = optimizeForNVIDIA(engineSettings, gameSettings)
