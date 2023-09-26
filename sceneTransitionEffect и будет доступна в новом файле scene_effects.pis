@@ -1,0 +1,28 @@
+# Файл: scene_effects.pis
+
+# Функция для создания эффектов переходов между сценами
+def sceneTransitionEffect(effectType, duration):
+    if effectType == "fade":
+        # Реализация плавного затемнения/расцветания экрана
+        fade_duration = duration / 2
+        fade_in(fade_duration)
+        # Здесь можно вставить специфичные действия для каждого типа эффекта
+        # ...
+        fade_out(fade_duration)
+    elif effectType == "slide":
+        # Реализация сдвига сцены в сторону
+        slide_duration = duration
+        slide_left(slide_duration)
+        # Здесь можно вставить специфичные действия для каждого типа эффекта
+        # ...
+    elif effectType == "zoom":
+        # Реализация зума сцены
+        zoom_duration = duration
+        zoom_in(zoom_duration)
+        # Здесь можно вставить специфичные действия для каждого типа эффекта
+        # ...
+
+# Пример использования:
+sceneTransitionEffect("fade", 2.0)  # Применяем плавное затемнение/расцветание сцены в течение 2 секунд
+sceneTransitionEffect("slide", 1.5)  # Применяем сдвиг сцены в течение 1.5 секунд
+sceneTransitionEffect("zoom", 1.0)   # Применяем зум сцены в течение 1 секунды
