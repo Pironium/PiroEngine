@@ -1,0 +1,32 @@
+# PiroEngine Dynamic Audio Support
+# This module handles dynamic audio loading and playback.
+
+class DynamicAudioManager:
+    def __init__(self):
+        self.loaded_sounds = {}
+
+    def load_sound(self, sound_id, file_path):
+        """
+        Load a sound file into memory.
+        :param sound_id: Unique identifier for the sound.
+        :param file_path: Path to the sound file.
+        """
+        if sound_id not in self.loaded_sounds:
+            self.loaded_sounds[sound_id] = load_sound_from_file(file_path)
+        else:
+            print(f"Sound with ID {sound_id} is already loaded.")
+
+    def play_sound(self, sound_id):
+        """
+        Play a loaded sound.
+        :param sound_id: Unique identifier for the sound.
+        """
+        if sound_id in self.loaded_sounds:
+            play_sound(self.loaded_sounds[sound_id])
+        else:
+            print(f"Sound with ID {sound_id} is not loaded.")
+
+# Example usage:
+audio_manager = DynamicAudioManager()
+audio_manager.load_sound("bg_music", "sounds/background_music.mp3")
+audio_manager.play_sound("bg_music")
