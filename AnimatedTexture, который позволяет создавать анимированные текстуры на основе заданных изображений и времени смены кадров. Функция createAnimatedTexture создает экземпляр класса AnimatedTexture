@@ -1,0 +1,31 @@
+// Директория, в которой будет файл: engine/utils/
+// Название файла: texture_utils.js
+
+class AnimatedTexture {
+  constructor(frames, frameDuration) {
+    this.frames = frames; // Массив изображений для анимации
+    this.frameDuration = frameDuration; // Длительность каждого кадра
+    this.currentFrameIndex = 0; // Индекс текущего кадра
+    this.timeElapsed = 0; // Время, прошедшее с предыдущей смены кадра
+  }
+
+  update(deltaTime) {
+    this.timeElapsed += deltaTime;
+
+    // Проверяем, нужно ли сменить кадр
+    if (this.timeElapsed >= this.frameDuration) {
+      this.currentFrameIndex = (this.currentFrameIndex + 1) % this.frames.length;
+      this.timeElapsed -= this.frameDuration;
+    }
+  }
+
+  getCurrentFrame() {
+    return this.frames[this.currentFrameIndex];
+  }
+}
+
+function createAnimatedTexture(frames, frameDuration) {
+  return new AnimatedTexture(frames, frameDuration);
+}
+
+export { createAnimatedTexture };
