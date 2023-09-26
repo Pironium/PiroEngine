@@ -1,0 +1,32 @@
+# DynamicSound.pis - Implementing Dynamic Sound Support in PiroEngine
+
+# Define the DynamicSound class
+class DynamicSound:
+    private var soundFile: string
+    private var volume: float
+    private var pitch: float
+
+    # Constructor to initialize sound attributes
+    constructor(soundFile: string, volume: float, pitch: float):
+        this.soundFile = soundFile
+        this.volume = volume
+        this.pitch = pitch
+
+    # Method to play the dynamic sound
+    method play():
+        # Code to load and play the sound with specified volume and pitch
+        # You can use PiroScript's built-in audio functions here
+
+    # Method to stop the dynamic sound
+    method stop():
+        # Code to stop playing the sound
+
+    # Method to set the volume of the dynamic sound
+    method setVolume(newVolume: float):
+        # Code to adjust the volume of the sound
+
+    # Method to set the pitch of the dynamic sound
+    method setPitch(newPitch: float):
+        # Code to adjust the pitch of the sound
+
+# End of DynamicSound class definition
