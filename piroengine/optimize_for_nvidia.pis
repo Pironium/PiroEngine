@@ -1,0 +1,15 @@
+# Optimize for Nvidia GPUs
+function optimizeForNvidia() {
+    if (system.gpuVendor == "Nvidia") {
+        // Nvidia-specific optimizations
+        setRenderingMode("NvidiaOptimized");
+        enableCudaAcceleration();
+        configureMemoryPools("Nvidia");
+        
+        // Apply shader optimizations
+        loadShader("nvidia_optimized_shader");
+        
+        // Enable Nvidia-specific features
+        enableNvidiaRayTracing();
+    }
+}
