@@ -1,0 +1,30 @@
+# gpu_optimization.pis
+
+# Функция optimizeForGPUs оптимизирует движок под видеокарты NVIDIA и AMD.
+# Она принимает на вход параметр gpu_type, который может быть "NVIDIA" или "AMD".
+
+function optimizeForGPUs(gpu_type) {
+    if (gpu_type == "NVIDIA") {
+        # Оптимизация для NVIDIA
+        enableCUDA()
+        setMaxThreadsPerBlock(1024)
+        setSharedMemoryPerBlock(48 * 1024)
+        setRegisterPerThread(64)
+        setGPUOptimizationLevel("high")
+    } else if (gpu_type == "AMD") {
+        # Оптимизация для AMD
+        enableHIP()
+        setMaxThreadsPerBlock(1024)
+        setSharedMemoryPerBlock(64 * 1024)
+        setWavefrontSize(64)
+        setGPUOptimizationLevel("high")
+    } else {
+        print("Неподдерживаемый тип GPU")
+    }
+}
+
+# Пример использования функции для оптимизации под NVIDIA
+optimizeForGPUs("NVIDIA")
+
+# Пример использования функции для оптимизации под AMD
+optimizeForGPUs("AMD")
