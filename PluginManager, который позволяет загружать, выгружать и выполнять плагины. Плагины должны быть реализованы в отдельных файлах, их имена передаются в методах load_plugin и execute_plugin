@@ -1,0 +1,43 @@
+# plugin_manager.pis
+
+class PluginManager:
+    constructor():
+        self.plugins = {}  # Словарь для хранения загруженных плагинов
+
+    # Метод для загрузки плагина
+    def load_plugin(self, plugin_name):
+        try:
+            # Импортируем модуль плагина по его имени
+            plugin_module = import_module(plugin_name)
+            
+            # Создаем экземпляр плагина
+            plugin_instance = plugin_module.Plugin()
+            
+            # Добавляем плагин в словарь
+            self.plugins[plugin_name] = plugin_instance
+            
+            print(f"Плагин '{plugin_name}' успешно загружен.")
+        except Exception as e:
+            print(f"Ошибка при загрузке плагина '{plugin_name}': {str(e)}")
+
+    # Метод для выгрузки плагина
+    def unload_plugin(self, plugin_name):
+        if plugin_name in self.plugins:
+            del self.plugins[plugin_name]
+            print(f"Плагин '{plugin_name}' выгружен.")
+        else:
+            print(f"Плагин '{plugin_name}' не найден в списке загруженных плагинов.")
+
+    # Метод для выполнения плагина
+    def execute_plugin(self, plugin_name):
+        if plugin_name in self.plugins:
+            plugin_instance = self.plugins[plugin_name]
+            plugin_instance.execute()
+        else:
+            print(f"Плагин '{plugin_name}' не найден в списке загруженных плагинов.")
+
+# Пример использования
+if __name__ == "__main__":
+    plugin_manager = PluginManager()
+    plugin_manager.load_plugin("example_plugin")
+    plugin_manager.execute_plugin("example_plugin")
