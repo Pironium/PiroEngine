@@ -1,0 +1,40 @@
+# Директория: engine/
+# Название файла: object_creator.py
+
+class GameObject:
+    def __init__(self, name, position, scale, rotation):
+        self.name = name
+        self.position = position
+        self.scale = scale
+        self.rotation = rotation
+
+    def translate(self, x, y, z):
+        self.position[0] += x
+        self.position[1] += y
+        self.position[2] += z
+
+    def scale_up(self, factor):
+        self.scale *= factor
+
+    def rotate(self, angle_x, angle_y, angle_z):
+        self.rotation[0] += angle_x
+        self.rotation[1] += angle_y
+        self.rotation[2] += angle_z
+
+class ObjectCreator:
+    def __init__(self):
+        self.objects = []
+
+    def create_object(self, name, position, scale, rotation):
+        new_object = GameObject(name, position, scale, rotation)
+        self.objects.append(new_object)
+
+    def get_object(self, name):
+        for obj in self.objects:
+            if obj.name == name:
+                return obj
+
+    def remove_object(self, name):
+        obj_to_remove = self.get_object(name)
+        if obj_to_remove:
+            self.objects.remove(obj_to_remove)
