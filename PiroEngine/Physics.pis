@@ -1,0 +1,35 @@
+// PiroScript (PiroEngine Physics)
+
+// Объявление класса для физического объекта
+class PhysicsObject {
+    let mass: Double // Масса объекта
+    var position: Vector3 // Позиция объекта
+    var velocity: Vector3 // Скорость объекта
+    var acceleration: Vector3 // Ускорение объекта
+    
+    init(mass: Double, position: Vector3) {
+        self.mass = mass
+        self.position = position
+        self.velocity = Vector3(x: 0, y: 0, z: 0)
+        self.acceleration = Vector3(x: 0, y: 0, z: 0)
+    }
+    
+    // Метод для обновления физического состояния объекта
+    func update(deltaTime: Double) {
+        // Расчет физики, включая гравитацию и столкновения
+        // Обновление позиции, скорости и ускорения
+    }
+}
+
+// Добавление гравитации в 3D-мир
+let gravity = Vector3(x: 0, y: -9.8, z: 0) // Гравитационное ускорение
+
+// Пример использования физического объекта
+let box = PhysicsObject(mass: 2.0, position: Vector3(x: 0, y: 0, z: 0))
+
+// Применение гравитации к объекту
+box.acceleration = gravity
+
+// Обновление физического состояния объекта в каждом кадре
+let deltaTime = 0.016 // Продолжительность кадра в секундах (предполагаемая)
+box.update(deltaTime: deltaTime)
