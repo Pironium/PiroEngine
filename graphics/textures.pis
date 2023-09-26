@@ -1,0 +1,36 @@
+# PiroEngine Texture Coordinate Generation Function
+
+# This function generates texture coordinates based on the provided parameters.
+# It takes in the width and height of the texture, as well as the type of mapping (UV or polar).
+# It returns an array of texture coordinates.
+
+function generateTextureCoordinates(width: float, height: float, mappingType: string) -> float[] {
+    if (mappingType == "UV") {
+        # UV Mapping: Normalize coordinates in the range [0, 1]
+        let coordinates: float[] = [];
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                coordinates.push(float(x) / width);
+                coordinates.push(float(y) / height);
+            }
+        }
+        return coordinates;
+    } else if (mappingType == "Polar") {
+        # Polar Mapping: Map coordinates to a polar grid
+        let coordinates: float[] = [];
+        let centerX: float = width / 2.0;
+        let centerY: float = height / 2.0;
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                let radius: float = sqrt(pow(x - centerX, 2) + pow(y - centerY, 2));
+                let angle: float = atan2(y - centerY, x - centerX);
+                coordinates.push(radius / max(width, height));
+                coordinates.push(angle / (2 * PI));
+            }
+        }
+        return coordinates;
+    } else {
+        # Unsupported mapping type
+        throw "Unsupported mapping type: " + mappingType;
+    }
+}
