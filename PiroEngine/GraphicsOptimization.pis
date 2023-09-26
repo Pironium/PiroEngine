@@ -1,0 +1,42 @@
+# PiroEngine/GraphicsOptimization.pis
+
+# Функция для оптимизации работы с видеокартами NVIDIA
+function optimizeForNvidia() {
+    # Реализация оптимизаций для NVIDIA
+    # ...
+
+    print("Optimizing for NVIDIA graphics cards...")
+}
+
+# Функция для оптимизации работы с видеокартами AMD
+function optimizeForAmd() {
+    # Реализация оптимизаций для AMD
+    # ...
+
+    print("Optimizing for AMD graphics cards...")
+}
+
+# Главная функция, которая оптимизирует графическую работу в зависимости от выбранной видеокарты
+function optimizeGraphicsForCurrentCard() {
+    # Определить текущую видеокарту (NVIDIA или AMD)
+    currentGraphicsCard = getCurrentGraphicsCard()
+
+    # Вызвать соответствующую оптимизацию
+    if (currentGraphicsCard == "NVIDIA") {
+        optimizeForNvidia()
+    } elseif (currentGraphicsCard == "AMD") {
+        optimizeForAmd()
+    } else {
+        print("Unsupported graphics card. No optimizations applied.")
+    }
+}
+
+# Функция для получения текущей видеокарты (просто для демонстрации)
+function getCurrentGraphicsCard() {
+    # В реальной реализации здесь будет код определения видеокарты
+    # Возвращаем NVIDIA для демонстрации
+    return "NVIDIA"
+}
+
+# Вызываем главную функцию для оптимизации
+optimizeGraphicsForCurrentCard()
