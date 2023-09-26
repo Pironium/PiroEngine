@@ -1,0 +1,11 @@
+# PiroScript code for video card optimization
+import PiroGraphics
+
+function optimizeForNvidiaAndAMD():
+    if PiroGraphics.getGraphicsCardVendor() == "Nvidia" or PiroGraphics.getGraphicsCardVendor() == "AMD":
+        PiroGraphics.setRenderQuality("High")
+        PiroGraphics.enableHardwareAcceleration()
+        PiroGraphics.optimizeShaderCompilation()
+        PiroGraphics.setAntiAliasingLevel(4)
+        PiroGraphics.setAnisotropicFilteringLevel(8)
+        PiroGraphics.enableDynamicResolution()
