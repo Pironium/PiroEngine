@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiroEngine GUI</title>
+    <link rel="stylesheet" href="piroengine_styles.css">
+</head>
+<body>
+    <div id="piroengine_container">
+        <div id="piroengine_canvas">
+            <!-- This is where the 3D game scene will be rendered -->
+        </div>
+        <div id="piroengine_ui">
+            <!-- Create a 3D model viewer -->
+            <div id="model_viewer">
+                <canvas id="model_viewer_canvas"></canvas>
+                <div id="model_viewer_controls">
+                    <button id="rotate_left_button">Rotate Left</button>
+                    <button id="rotate_right_button">Rotate Right</button>
+                    <button id="zoom_in_button">Zoom In</button>
+                    <button id="zoom_out_button">Zoom Out</button>
+                </div>
+            </div>
+            <!-- Create a 3D physics simulation -->
+            <div id="physics_simulator">
+                <canvas id="physics_simulator_canvas"></canvas>
+                <div id="physics_controls">
+                    <button id="start_simulation_button">Start Simulation</button>
+                    <button id="pause_simulation_button">Pause Simulation</button>
+                    <button id="reset_simulation_button">Reset Simulation</button>
+                </div>
+            </div>
+            <!-- Add a chat interface for developers -->
+            <div id="developer_chat">
+                <div id="chat_messages">
+                    <!-- Display chat messages here -->
+                </div>
+                <input type="text" id="chat_input" placeholder="Type your message...">
+                <button id="send_message_button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include PiroEngine script -->
+    <script src="piroengine.js"></script>
+
+    <!-- Include custom GUI scripts -->
+    <script src="model_viewer.js"></script>
+    <script src="physics_simulator.js"></script>
+    <script src="developer_chat.js"></script>
+</body>
+</html>
