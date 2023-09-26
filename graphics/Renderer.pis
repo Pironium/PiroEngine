@@ -1,0 +1,59 @@
+# PiroScript code for advanced rendering with Nvidia and AMD GPU optimizations
+
+function renderScene(scene: Scene) {
+    if (isNvidiaGPU()) {
+        setupNvidiaOptimizations();
+    } else if (isAMDGPU()) {
+        setupAMDOptimizations();
+    } else {
+        defaultGraphicsSetup();
+    }
+
+    // Code for rendering the scene
+    // ...
+
+    if (isNvidiaGPU()) {
+        cleanupNvidiaOptimizations();
+    } else if (isAMDGPU()) {
+        cleanupAMDOptimizations();
+    } else {
+        cleanupDefaultGraphicsSetup();
+    }
+}
+
+function setupNvidiaOptimizations() {
+    // Setup specific optimizations for Nvidia GPUs
+    // ...
+}
+
+function setupAMDOptimizations() {
+    // Setup specific optimizations for AMD GPUs
+    // ...
+}
+
+function cleanupNvidiaOptimizations() {
+    // Cleanup Nvidia GPU specific resources
+    // ...
+}
+
+function cleanupAMDOptimizations() {
+    // Cleanup AMD GPU specific resources
+    // ...
+}
+
+function defaultGraphicsSetup() {
+    // Default graphics setup for other GPUs
+    // ...
+}
+
+function isNvidiaGPU() {
+    // Check if the GPU is Nvidia
+    // Return true or false based on detection
+    // ...
+}
+
+function isAMDGPU() {
+    // Check if the GPU is AMD
+    // Return true or false based on detection
+    // ...
+}
