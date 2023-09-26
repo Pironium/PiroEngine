@@ -1,0 +1,25 @@
+import zlib
+
+class Compression:
+    def __init__(self):
+        pass
+
+    def compress_data(self, data):
+        """
+        Compresses data using zlib compression.
+        
+        :param data: The data to be compressed.
+        :return: Compressed data as bytes.
+        """
+        compressed_data = zlib.compress(data, level=zlib.Z_BEST_COMPRESSION)
+        return compressed_data
+
+    def decompress_data(self, compressed_data):
+        """
+        Decompresses previously compressed data.
+        
+        :param compressed_data: The compressed data to be decompressed.
+        :return: Decompressed data as bytes.
+        """
+        decompressed_data = zlib.decompress(compressed_data)
+        return decompressed_data
