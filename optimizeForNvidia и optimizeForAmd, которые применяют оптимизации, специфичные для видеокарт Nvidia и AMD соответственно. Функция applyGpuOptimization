@@ -1,0 +1,38 @@
+# engine/optimizations/gpu_optimization.pis
+
+# Import the necessary libraries
+import PiroGraphics
+import PiroUtils
+
+# Define a function for Nvidia GPU optimization
+function optimizeForNvidia() {
+    # Implement Nvidia-specific optimizations here
+    PiroGraphics.setRenderMode("NvidiaOptimized")
+    PiroUtils.enableAsyncCompute(true)
+    PiroUtils.enableRayTracing(false)
+    PiroGraphics.setShadowQuality("High")
+    PiroGraphics.setAntiAliasing("DLSS")
+}
+
+# Define a function for AMD GPU optimization
+function optimizeForAmd() {
+    # Implement AMD-specific optimizations here
+    PiroGraphics.setRenderMode("AMDOptimized")
+    PiroUtils.enableAsyncCompute(true)
+    PiroUtils.enableRayTracing(true)
+    PiroGraphics.setShadowQuality("Ultra")
+    PiroGraphics.setAntiAliasing("FidelityFX")
+}
+
+# Main function to determine GPU type and apply optimization
+function applyGpuOptimization() {
+    let gpuType = PiroGraphics.getGpuType()
+
+    if (gpuType == "Nvidia") {
+        optimizeForNvidia()
+    } else if (gpuType == "AMD") {
+        optimizeForAmd()
+    } else {
+        print("Unsupported GPU type: " + gpuType)
+    }
+}
