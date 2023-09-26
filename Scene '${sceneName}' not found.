@@ -1,0 +1,85 @@
+// PiroEngine.js - Pironium's Game Engine
+
+// Define the PiroEngine class
+class PiroEngine {
+  constructor() {
+    this.scenes = [];
+    this.currentScene = null;
+  }
+
+  // Add a new scene to the engine
+  addScene(scene) {
+    this.scenes.push(scene);
+  }
+
+  // Set the current scene
+  setCurrentScene(sceneName) {
+    const scene = this.scenes.find((s) => s.name === sceneName);
+    if (scene) {
+      this.currentScene = scene;
+      this.currentScene.start();
+    } else {
+      console.error(`Scene '${sceneName}' not found.`);
+    }
+  }
+}
+
+// Define the PiroScene class
+class PiroScene {
+  constructor(name) {
+    this.name = name;
+    this.entities = [];
+  }
+
+  // Add an entity to the scene
+  addEntity(entity) {
+    this.entities.push(entity);
+  }
+
+  // Start the scene
+  start() {
+    console.log(`Starting scene: ${this.name}`);
+    for (const entity of this.entities) {
+      entity.start();
+    }
+  }
+}
+
+// Define the PiroEntity class
+class PiroEntity {
+  constructor(name) {
+    this.name = name;
+  }
+
+  // Start the entity
+  start() {
+    console.log(`Starting entity: ${this.name}`);
+    // Add your entity logic here
+  }
+}
+
+// Usage example:
+
+// Create a new PiroEngine instance
+const engine = new PiroEngine();
+
+// Create scenes
+const mainScene = new PiroScene("Main Scene");
+const menuScene = new PiroScene("Menu Scene");
+
+// Create entities
+const player = new PiroEntity("Player");
+const enemy = new PiroEntity("Enemy");
+const menuButton = new PiroEntity("Menu Button");
+
+// Add entities to scenes
+mainScene.addEntity(player);
+mainScene.addEntity(enemy);
+menuScene.addEntity(menuButton);
+
+// Add scenes to the engine
+engine.addScene(mainScene);
+engine.addScene(menuScene);
+
+// Set the current scene
+engine.setCurrentScene("Main Scene");
