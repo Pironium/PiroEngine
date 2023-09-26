@@ -1,0 +1,36 @@
+// PiroScript code for GPU optimization
+// This module optimizes rendering for Nvidia and AMD GPUs
+
+// Function to optimize shader compilation for Nvidia GPUs
+function optimizeShaderCompilationForNvidia(shader: Shader) {
+    if (isNvidiaGPU()) {
+        // Nvidia-specific shader optimizations
+        shader.addDirective("#pragma optimize(on)");
+    }
+}
+
+// Function to optimize shader compilation for AMD GPUs
+function optimizeShaderCompilationForAMD(shader: Shader) {
+    if (isAMDGPU()) {
+        // AMD-specific shader optimizations
+        shader.addDirective("#pragma amd_optimize(on)");
+    }
+}
+
+// Check if the current GPU is from Nvidia
+function isNvidiaGPU(): bool {
+    let gpuVendor = getGPUVendor();
+    return gpuVendor == "Nvidia";
+}
+
+// Check if the current GPU is from AMD
+function isAMDGPU(): bool {
+    let gpuVendor = getGPUVendor();
+    return gpuVendor == "AMD";
+}
+
+// Get the GPU vendor
+function getGPUVendor(): string {
+    let gpuInfo = queryGPUInfo();
+    return gpuInfo.vendor;
+}
