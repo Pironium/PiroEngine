@@ -1,0 +1,51 @@
+# engine/physics_utils.py
+
+class PhysicsEngine:
+    def __init__(self):
+        self.objects = []  # Список объектов, имеющих физическую модель
+        self.gravity = 9.8  # Ускорение свободного падения
+
+    def add_object(self, obj):
+        """
+        Добавить объект в физическую симуляцию.
+        :param obj: Объект с физической моделью
+        """
+        self.objects.append(obj)
+
+    def remove_object(self, obj):
+        """
+        Удалить объект из физической симуляции.
+        :param obj: Объект с физической моделью
+        """
+        if obj in self.objects:
+            self.objects.remove(obj)
+
+    def apply_gravity(self):
+        """
+        Применить гравитацию ко всем объектам.
+        """
+        for obj in self.objects:
+            obj.apply_force(0, -self.gravity * obj.mass)  # Применяем силу гравитации
+
+class GameObject:
+    def __init__(self, mass):
+        self.mass = mass  # Масса объекта
+        self.position = (0, 0)  # Текущая позиция (x, y)
+        self.velocity = (0, 0)  # Текущая скорость (vx, vy)
+
+    def apply_force(self, fx, fy):
+        """
+        Применить силу к объекту.
+        :param fx: Компонента силы по оси X
+        :param fy: Компонента силы по оси Y
+        """
+        # Применяем силу, изменяя скорость объекта
+        self.velocity = (self.velocity[0] + fx / self.mass, self.velocity[1] + fy / self.mass)
+
+    def update_position(self, dt):
+        """
+        Обновить позицию объекта на основе скорости.
+        :param dt: Время шага симуляции
+        """
+        # Изменяем позицию, основываясь на скорости
+        self.position = (self.position[0] + self.velocity[0] * dt, self.position[1] + self.velocity[1] * dt)
