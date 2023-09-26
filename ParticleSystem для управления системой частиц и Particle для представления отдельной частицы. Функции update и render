@@ -1,0 +1,54 @@
+// engine/core/particle_system.js
+
+class ParticleSystem {
+  constructor() {
+    this.particles = [];
+  }
+
+  initialize() {
+    // Инициализация системы частиц
+  }
+
+  update(deltaTime) {
+    // Обновление частиц в системе
+    for (const particle of this.particles) {
+      // Обновление позиции, скорости и других параметров частиц
+    }
+  }
+
+  render() {
+    // Отрисовка частиц
+    for (const particle of this.particles) {
+      // Отрисовка каждой частицы
+    }
+  }
+
+  addParticle(particle) {
+    // Добавление частицы в систему
+    this.particles.push(particle);
+  }
+
+  removeParticle(particle) {
+    // Удаление частицы из системы
+    const index = this.particles.indexOf(particle);
+    if (index !== -1) {
+      this.particles.splice(index, 1);
+    }
+  }
+}
+
+class Particle {
+  constructor() {
+    this.position = { x: 0, y: 0, z: 0 };
+    this.velocity = { x: 0, y: 0, z: 0 };
+    this.size = 1;
+    this.color = '#FFFFFF';
+  }
+
+  update(deltaTime) {
+    // Обновление параметров частицы
+  }
+}
+
+// Экспортируем классы для использования в движке
+module.exports = { ParticleSystem, Particle };
