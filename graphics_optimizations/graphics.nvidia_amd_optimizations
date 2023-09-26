@@ -1,0 +1,31 @@
+#include <iostream>
+
+void optimizeForNvidia() {
+    // Nvidia-specific optimization code here
+    // ...
+    std::cout << "Optimized for Nvidia" << std::endl;
+}
+
+void optimizeForAMD() {
+    // AMD-specific optimization code here
+    // ...
+    std::cout << "Optimized for AMD" << std::endl;
+}
+
+int main() {
+    // Detect the user's GPU vendor
+    std::string gpuVendor = detectGPUVendor(); // Assume this function exists
+
+    if (gpuVendor == "NVIDIA") {
+        optimizeForNvidia();
+    } else if (gpuVendor == "AMD") {
+        optimizeForAMD();
+    } else {
+        std::cout << "Unknown GPU vendor" << std::endl;
+    }
+
+    // Other engine initialization code
+    // ...
+
+    return 0;
+}
