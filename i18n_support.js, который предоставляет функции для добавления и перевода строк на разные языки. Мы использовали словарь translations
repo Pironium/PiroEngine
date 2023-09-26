@@ -1,0 +1,41 @@
+/**
+ * PiroEngine Internationalization (i18n) Support
+ * This module provides utilities for translating strings into different languages.
+ */
+
+// Define a dictionary to store translation key-value pairs
+const translations = {};
+
+/**
+ * Function to add a translation to the dictionary.
+ * @param {string} key - The translation key.
+ * @param {string} value - The translated string.
+ * @param {string} language - The target language code (e.g., 'en', 'fr', 'es').
+ */
+function addTranslation(key, value, language) {
+  if (!translations[language]) {
+    translations[language] = {};
+  }
+  translations[language][key] = value;
+}
+
+/**
+ * Function to translate a string into the target language.
+ * @param {string} key - The translation key.
+ * @param {string} language - The target language code.
+ * @returns {string} - The translated string or the original string if no translation is found.
+ */
+function translate(key, language) {
+  if (translations[language] && translations[language][key]) {
+    return translations[language][key];
+  } else {
+    // Return the original string if no translation is found
+    return key;
+  }
+}
+
+// Export the functions for i18n support
+module.exports = {
+  addTranslation,
+  translate,
+};
