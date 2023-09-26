@@ -1,0 +1,35 @@
+# PiroEngine Graphics Optimization for Nvidia and AMD GPUs
+
+# Import the necessary libraries
+import PiroScript as ps
+import GraphicsAPI as gfx
+
+# Define a function for Nvidia GPU optimization
+def optimize_for_nvidia():
+    # Check if the current GPU is Nvidia
+    if gfx.get_gpu_vendor() == gfx.GPUVendor.NVIDIA:
+        # Perform Nvidia-specific optimizations
+        gfx.set_texture_compression(gfx.TextureCompressionMode.NVIDIA_COMPRESSION)
+        gfx.set_shader_optimization_level(gfx.ShaderOptimizationLevel.HIGH)
+        gfx.enable_gpu_boost()
+
+# Define a function for AMD GPU optimization
+def optimize_for_amd():
+    # Check if the current GPU is AMD
+    if gfx.get_gpu_vendor() == gfx.GPUVendor.AMD:
+        # Perform AMD-specific optimizations
+        gfx.set_texture_compression(gfx.TextureCompressionMode.AMD_COMPRESSION)
+        gfx.set_shader_optimization_level(gfx.ShaderOptimizationLevel.HIGH)
+        gfx.enable_async_compute()
+
+# Main function for graphics optimization
+def main():
+    # Detect the GPU vendor and optimize accordingly
+    if gfx.get_gpu_vendor() == gfx.GPUVendor.NVIDIA:
+        optimize_for_nvidia()
+    elif gfx.get_gpu_vendor() == gfx.GPUVendor.AMD:
+        optimize_for_amd()
+
+# Entry point of the optimization script
+if __name__ == "__main__":
+    main()
