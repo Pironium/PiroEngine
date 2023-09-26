@@ -1,0 +1,25 @@
+// Файл ai_utils.yop
+class AIUtils {
+    public static function calculatePath(start:Vector3, end:Vector3, obstacles:Array<Collider3D>):Array<Vector3> {
+        // Расчет оптимального пути с учетом препятствий
+        var path:Array<Vector3> = [];
+
+        // Реализация алгоритма поиска пути...
+
+        return path;
+    }
+
+    public static function findClosestEnemy(entity:Entity, enemies:Array<Entity>):Entity {
+        // Поиск ближайшего врага
+        var closestEnemy:Entity = null;
+
+        // Реализация поиска ближайшего врага...
+
+        return closestEnemy;
+    }
+
+    public static function simulateBehavior(entity:Entity, timeDelta:Float):Void {
+        // Моделирование поведения ИИ с учетом времени
+        // Реализация уникальных фич, как в 3D движках...
+    }
+}
