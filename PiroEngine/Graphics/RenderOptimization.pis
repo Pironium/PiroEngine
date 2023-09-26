@@ -1,0 +1,38 @@
+# PiroEngine Render Optimization for Nvidia and AMD GPUs
+# This file contains the code for optimizing rendering on Nvidia and AMD GPUs
+
+# Define a function for optimizing rendering for Nvidia GPUs
+function optimizeForNvidia() {
+    # Check if the current GPU is Nvidia
+    if (PiroEngine.getGPUMake() == "Nvidia") {
+        # Nvidia-specific rendering optimizations
+        PiroEngine.setRenderMode("NvidiaOptimized");
+        PiroEngine.enableNvidiaSpecificFeatures();
+        PiroEngine.setNvidiaOptimizationLevel("High");
+        PiroEngine.adjustNvidiaTextureCompression();
+        PiroEngine.setNvidiaShadowQuality("Ultra");
+    }
+}
+
+# Define a function for optimizing rendering for AMD GPUs
+function optimizeForAmd() {
+    # Check if the current GPU is AMD
+    if (PiroEngine.getGPUMake() == "AMD") {
+        # AMD-specific rendering optimizations
+        PiroEngine.setRenderMode("AMDOptimized");
+        PiroEngine.enableAMDSpecificFeatures();
+        PiroEngine.setAMDOptimizationLevel("High");
+        PiroEngine.adjustAMDTextureCompression();
+        PiroEngine.setAMDShadowQuality("Ultra");
+    }
+}
+
+# Main function to optimize rendering based on GPU make
+function optimizeRendering() {
+    # Determine GPU make and apply optimizations
+    optimizeForNvidia();
+    optimizeForAmd();
+}
+
+# Entry point: Optimize rendering on PiroEngine startup
+optimizeRendering();
