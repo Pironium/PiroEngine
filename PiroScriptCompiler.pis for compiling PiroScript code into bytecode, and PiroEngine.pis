@@ -1,0 +1,45 @@
+// PiroScriptCompiler.pis
+
+func compilePiroScript(piroScript: String) -> String {
+    // Implementation of the PiroScript compiler goes here
+    // This function will compile PiroScript code into executable bytecode
+    
+    var bytecode = ""
+    
+    // Add code to parse and generate bytecode
+    
+    return bytecode
+}
+
+// PiroEngine.pis
+
+class PiroEngine {
+    var games: [String]
+    var compiledScripts: [String: String]
+    
+    init() {
+        self.games = []
+        self.compiledScripts = [:]
+    }
+    
+    func createGame(name: String) {
+        games.append(name)
+    }
+    
+    func loadPiroScript(scriptName: String, scriptCode: String) {
+        let compiledCode = compilePiroScript(piroScript: scriptCode)
+        compiledScripts[scriptName] = compiledCode
+    }
+    
+    func runGame(gameName: String, scriptName: String) {
+        guard let compiledCode = compiledScripts[scriptName] else {
+            print("Error: Script \(scriptName) not found.")
+            return
+        }
+        
+        // Execute the compiled code within the game environment
+        // This is where the magic happens
+        
+        print("Running \(scriptName) in \(gameName)...")
+    }
+}
