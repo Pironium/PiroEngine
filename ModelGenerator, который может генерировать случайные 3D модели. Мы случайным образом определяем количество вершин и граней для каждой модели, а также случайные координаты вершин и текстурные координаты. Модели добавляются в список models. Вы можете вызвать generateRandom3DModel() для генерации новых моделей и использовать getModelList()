@@ -1,0 +1,49 @@
+import random
+
+class ModelGenerator:
+    def __init__(self):
+        self.models = []
+
+    def generateRandom3DModel(self):
+        model = {
+            'vertices': [],
+            'faces': [],
+            'textures': [],
+        }
+
+        num_vertices = random.randint(10, 100)
+        num_faces = random.randint(20, 200)
+
+        for _ in range(num_vertices):
+            x = random.uniform(-1.0, 1.0)
+            y = random.uniform(-1.0, 1.0)
+            z = random.uniform(-1.0, 1.0)
+            model['vertices'].append((x, y, z))
+
+        for _ in range(num_faces):
+            v1 = random.randint(0, num_vertices - 1)
+            v2 = random.randint(0, num_vertices - 1)
+            v3 = random.randint(0, num_vertices - 1)
+            model['faces'].append((v1, v2, v3))
+
+        for _ in range(num_vertices):
+            texture = (random.uniform(0.0, 1.0), random.uniform(0.0, 1.0))
+            model['textures'].append(texture)
+
+        self.models.append(model)
+
+    def getModelList(self):
+        return self.models
+
+if __name__ == "__main__":
+    generator = ModelGenerator()
+    for _ in range(5):  # Генерируем 5 случайных моделей
+        generator.generateRandom3DModel()
+
+    models = generator.getModelList()
+    for i, model in enumerate(models):
+        print(f"Model {i + 1}:")
+        print("Vertices:", model['vertices'])
+        print("Faces:", model['faces'])
+        print("Textures:", model['textures'])
+        print()
