@@ -1,0 +1,29 @@
+# PiroScript for Dynamic World Generation
+import random
+
+class DynamicWorldGenerator:
+    def __init__(self, seed):
+        self.seed = seed
+
+    def generate_world(self, size_x, size_y):
+        random.seed(self.seed)
+        world = []
+
+        for _ in range(size_x):
+            row = []
+            for _ in range(size_y):
+                # Генерируем случайные параметры для каждой ячейки мира
+                terrain_type = random.choice(["grass", "water", "mountain"])
+                resources = {
+                    "trees": random.randint(0, 5),
+                    "ores": random.randint(0, 3)
+                }
+                row.append({"terrain": terrain_type, "resources": resources})
+            world.append(row)
+
+        return world
+
+# Пример использования
+if __name__ == "__main__":
+    generator = DynamicWorldGenerator(seed=42)
+    world = generator.generate_world(size_x=100, size_y=100)
