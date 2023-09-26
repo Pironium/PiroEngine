@@ -1,0 +1,40 @@
+# graphics_optimization.pis
+
+# Функция для оптимизации работы с видеокартами NVIDIA
+function optimizeForNvidia() {
+    # Здесь мы добавляем специфические оптимизации для NVIDIA
+    print("Optimizing for NVIDIA graphics cards...")
+    
+    # Пример: установка специфических параметров для NVIDIA
+    setNvidiaParameters()
+    
+    # Дополнительные оптимизации
+    performNvidiaOptimizations()
+    
+    print("NVIDIA optimization complete.")
+}
+
+# Функция для оптимизации работы с видеокартами AMD
+function optimizeForAmd() {
+    # Здесь мы добавляем специфические оптимизации для AMD
+    print("Optimizing for AMD graphics cards...")
+    
+    # Пример: установка специфических параметров для AMD
+    setAmdParameters()
+    
+    # Дополнительные оптимизации
+    performAmdOptimizations()
+    
+    print("AMD optimization complete.")
+}
+
+# Основная функция, которая выбирает оптимизацию в зависимости от видеокарты
+function main() {
+    if (detectGraphicsCard() == "NVIDIA") {
+        optimizeForNvidia()
+    } else if (detectGraphicsCard() == "AMD") {
+        optimizeForAmd()
+    } else {
+        print("Unsupported graphics card detected.")
+    }
+}
