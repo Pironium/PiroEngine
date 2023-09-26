@@ -1,0 +1,48 @@
+# plugin_manager.py
+
+import importlib.util
+
+class PluginManager:
+    def __init__(self):
+        self.plugins = {}
+
+    def load_plugin(self, plugin_name, file_path):
+        try:
+            spec = importlib.util.spec_from_file_location(plugin_name, file_path)
+            plugin_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(plugin_module)
+            self.plugins[plugin_name] = plugin_module
+            print(f"Plugin '{plugin_name}' loaded successfully.")
+        except Exception as e:
+            print(f"Failed to load plugin '{plugin_name}': {e}")
+
+    def run_plugin_function(self, plugin_name, function_name, *args, **kwargs):
+        if plugin_name in self.plugins:
+            plugin = self.plugins[plugin_name]
+            if hasattr(plugin, function_name) and callable(getattr(plugin, function_name)):
+                try:
+                    result = getattr(plugin, function_name)(*args, **kwargs)
+                    print(f"Plugin '{plugin_name}' executed '{function_name}' with result: {result}")
+                except Exception as e:
+                    print(f"Error executing '{function_name}' of plugin '{plugin_name}': {e}")
+            else:
+                print(f"Function '{function_name}' not found in plugin '{plugin_name}'")
+        else:
+            print(f"Plugin '{plugin_name}' not found")
+
+# Пример использования:
+
+if __name__ == "__main__":
+    plugin_manager = PluginManager()
+
+    # Загрузка PiroScript плагина
+    plugin_manager.load_plugin("PiroScriptPlugin", "piro_script_plugin.pis")
+
+    # Загрузка Lua плагина
+    plugin_manager.load_plugin("LuaPlugin", "lua_plugin.lua")
+
+    # Выполнение функции из PiroScript плагина
+    plugin_manager.run_plugin_function("PiroScriptPlugin", "piroscript_function", arg1, arg2)
+
+    # Выполнение функции из Lua плагина
+    plugin_manager.run_plugin_function("LuaPlugin", "lua_function", arg1, arg2)
