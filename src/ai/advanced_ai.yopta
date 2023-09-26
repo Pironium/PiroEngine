@@ -1,0 +1,28 @@
+import yopta.math;
+
+class AdvancedAI {
+    private var perceptionRadius: Float = 10.0;
+    private var decisionThreshold: Float = 0.8;
+
+    // Функция определения, находится ли цель в зоне видимости
+    private function isTargetVisible(targetPosition: Vec3, aiPosition: Vec3): Bool {
+        // Рассчитываем расстояние до цели
+        var distance: Float = math.distance(aiPosition, targetPosition);
+
+        // Если цель ближе, чем радиус восприятия, считаем её видимой
+        return distance <= perceptionRadius;
+    }
+
+    // Функция для принятия решения об атаке или отступлении
+    public function makeDecision(targetPosition: Vec3, aiPosition: Vec3): Bool {
+        // Генерируем случайное значение от 0 до 1
+        var randomValue: Float = math.random();
+
+        // Если цель видима и случайное значение выше порога решения, атакуем
+        if (isTargetVisible(targetPosition, aiPosition) && randomValue > decisionThreshold) {
+            return true; // Атаковать цель
+        } else {
+            return false; // Отступить от цели
+        }
+    }
+}
