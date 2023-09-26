@@ -1,0 +1,35 @@
+# Директория: game_engine/utils/
+# Название файла: maze_generator.py
+
+import random
+
+class MazeGenerator:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.grid = [[1] * (width * 2 + 1) for _ in range(height * 2 + 1)]
+
+    def generate_maze(self, start_x, start_y):
+        stack = [(start_x, start_y)]
+        self.grid[start_y * 2 + 1][start_x * 2 + 1] = 0
+
+        while stack:
+            x, y = stack[-1]
+
+            neighbors = [(x + 2, y), (x - 2, y), (x, y + 2), (x, y - 2)]
+            random.shuffle(neighbors)
+
+            found = False
+            for nx, ny in neighbors:
+                if 0 <= nx < self.width and 0 <= ny < self.height and self.grid[ny * 2 + 1][nx * 2 + 1] == 1:
+                    mx, my = (nx + x) // 2, (ny + y) // 2
+                    self.grid[my * 2 + 1][mx * 2 + 1] = 0
+                    stack.append((nx, ny))
+                    found = True
+                    break
+
+            if not found:
+                stack.pop()
+
+    def get_maze(self):
+        return self.grid
