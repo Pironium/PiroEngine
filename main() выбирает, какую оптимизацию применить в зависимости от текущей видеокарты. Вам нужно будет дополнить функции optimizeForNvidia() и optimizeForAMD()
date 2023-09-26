@@ -1,0 +1,33 @@
+// Директория: engine/src/rendering/
+// Название файла: gpu_optimization.cpp
+
+#include <iostream>
+#include <string>
+
+// Функция оптимизации для Nvidia видеокарт
+void optimizeForNvidia() {
+    std::cout << "Optimizing for Nvidia GPUs..." << std::endl;
+    // Ваш сложный код оптимизации для Nvidia
+    // Например, оптимизация использования CUDA
+}
+
+// Функция оптимизации для AMD видеокарт
+void optimizeForAMD() {
+    std::cout << "Optimizing for AMD GPUs..." << std::endl;
+    // Ваш сложный код оптимизации для AMD
+    // Например, оптимизация использования AMD ROCm
+}
+
+int main() {
+    std::string currentGPU = "Nvidia"; // Измените на "AMD", если нужно
+
+    if (currentGPU == "Nvidia") {
+        optimizeForNvidia();
+    } else if (currentGPU == "AMD") {
+        optimizeForAMD();
+    } else {
+        std::cout << "Unsupported GPU type." << std::endl;
+    }
+
+    return 0;
+}
