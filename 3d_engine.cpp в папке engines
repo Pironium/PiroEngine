@@ -1,0 +1,41 @@
+// engines/3d_engine.cpp
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+class PiroEngine {
+public:
+    PiroEngine() {
+        std::cout << "PiroEngine initialized" << std::endl;
+    }
+
+    // Добавляем новую функцию "createScene" для создания игровых сцен.
+    void createScene(const std::string& sceneName) {
+        std::cout << "Creating a new 3D scene: " << sceneName << std::endl;
+        // Дополнительный код для инициализации сцены.
+    }
+
+    // Добавляем новую функцию "loadModel" для загрузки 3D моделей.
+    void loadModel(const std::string& modelName) {
+        std::cout << "Loading 3D model: " << modelName << std::endl;
+        // Дополнительный код для загрузки модели.
+    }
+
+    // Добавляем новую функцию "renderScene" для отрисовки сцены.
+    void renderScene() {
+        std::cout << "Rendering 3D scene" << std::endl;
+        // Дополнительный код для отрисовки сцены.
+    }
+};
+
+int main() {
+    PiroEngine engine;
+
+    // Используем новые функции движка.
+    engine.createScene("MyGameScene");
+    engine.loadModel("PlayerModel");
+    engine.renderScene();
+
+    return 0;
+}
