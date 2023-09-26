@@ -1,0 +1,51 @@
+# PiroEngine Multi-Platform Compiler Support
+# This module provides support for compiling games for multiple platforms.
+
+import os
+
+class MultiPlatformCompiler:
+    def __init__(self):
+        self.supported_platforms = ["Windows", "Android", "iPhone", "macOS", "Linux", "PS4", "Xbox One"]
+
+    def compile_game(self, game_name, platform):
+        if platform not in self.supported_platforms:
+            raise ValueError(f"Platform '{platform}' is not supported.")
+
+        print(f"Compiling game '{game_name}' for {platform}...")
+        # Add platform-specific compilation code here
+
+        # Example: For Windows
+        if platform == "Windows":
+            self.compile_for_windows(game_name)
+
+        # Example: For Android
+        elif platform == "Android":
+            self.compile_for_android(game_name)
+
+        # Example: For iPhone
+        elif platform == "iPhone":
+            self.compile_for_iphone(game_name)
+
+        # Add more platform-specific compilation code as needed
+
+    def compile_for_windows(self, game_name):
+        # Add Windows-specific compilation code here
+        pass
+
+    def compile_for_android(self, game_name):
+        # Add Android-specific compilation code here
+        pass
+
+    def compile_for_iphone(self, game_name):
+        # Add iPhone-specific compilation code here
+        pass
+
+    # Add methods for compiling games on other platforms
+
+# Example usage:
+if __name__ == "__main__":
+    compiler = MultiPlatformCompiler()
+    game_name = "MyAwesomeGame"
+    
+    for platform in compiler.supported_platforms:
+        compiler.compile_game(game_name, platform)
