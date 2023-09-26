@@ -1,0 +1,74 @@
+// engine_features/advertising.cpp
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+// Define a structure to represent an advertisement
+struct Advertisement {
+    std::string title;
+    std::string content;
+    std::string advertiser;
+    double payout;
+};
+
+// Define a class to manage advertisements
+class AdManager {
+private:
+    std::vector<Advertisement> ads;
+
+public:
+    // Add a new advertisement to the list
+    void AddAdvertisement(const std::string& title, const std::string& content, const std::string& advertiser, double payout) {
+        Advertisement ad;
+        ad.title = title;
+        ad.content = content;
+        ad.advertiser = advertiser;
+        ad.payout = payout;
+        ads.push_back(ad);
+    }
+
+    // Display all available advertisements
+    void DisplayAdvertisements() {
+        std::cout << "Available Advertisements:\n";
+        for (const auto& ad : ads) {
+            std::cout << "Title: " << ad.title << "\n";
+            std::cout << "Content: " << ad.content << "\n";
+            std::cout << "Advertiser: " << ad.advertiser << "\n";
+            std::cout << "Payout: $" << ad.payout << "\n\n";
+        }
+    }
+
+    // Calculate total earnings based on selected advertisements
+    double CalculateEarnings(const std::vector<int>& selectedAds) {
+        double totalEarnings = 0.0;
+        for (int adIndex : selectedAds) {
+            if (adIndex >= 0 && adIndex < ads.size()) {
+                totalEarnings += ads[adIndex].payout;
+            }
+        }
+        return totalEarnings;
+    }
+};
+
+int main() {
+    // Initialize the AdManager
+    AdManager adManager;
+
+    // Add some sample advertisements
+    adManager.AddAdvertisement("Ad 1", "This is the first advertisement", "Ad Company 1", 50.0);
+    adManager.AddAdvertisement("Ad 2", "This is the second advertisement", "Ad Company 2", 75.0);
+    adManager.AddAdvertisement("Ad 3", "This is the third advertisement", "Ad Company 3", 60.0);
+
+    // Display available advertisements
+    adManager.DisplayAdvertisements();
+
+    // Simulate a user selecting advertisements
+    std::vector<int> selectedAds = {0, 2};
+
+    // Calculate earnings based on selected advertisements
+    double earnings = adManager.CalculateEarnings(selectedAds);
+    std::cout << "Total earnings: $" << earnings << "\n";
+
+    return 0;
+}
