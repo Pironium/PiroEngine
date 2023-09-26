@@ -1,0 +1,28 @@
+# PiroScript code for realistic cloud generation
+
+# Import necessary libraries
+import noise
+import random
+
+# Function to generate a 3D cloud
+def generate_cloud(x_size, y_size, z_size):
+    cloud = []
+    for x in range(x_size):
+        for y in range(y_size):
+            for z in range(z_size):
+                # Use Perlin noise to create a cloud-like structure
+                density = noise.perlin3(x / 10.0, y / 10.0, z / 10.0)
+                
+                # Add some randomness for realism
+                density += random.uniform(-0.1, 0.1)
+                
+                # Threshold the density to create fluffy parts of the cloud
+                if density > 0.3:
+                    cloud.append((x, y, z))
+    
+    return cloud
+
+# Usage example
+if __name__ == "__main__":
+    cloud = generate_cloud(100, 50, 100)
+    print("Generated a 3D cloud with", len(cloud), "volumetric points.")
