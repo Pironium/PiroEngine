@@ -1,0 +1,30 @@
+# engine/audio/sound_manager.pis
+
+# Загружаем библиотеку для работы с аудио
+import audio_library
+
+# Класс SoundManager управляет динамическими звуками
+class SoundManager:
+
+    # Конструктор класса, инициализирует аудио систему
+    def __init__(self):
+        audio_library.initialize()
+
+    # Загрузить аудио файл
+    def load_sound(self, filename):
+        return audio_library.load_sound(filename)
+
+    # Воспроизвести звук
+    def play_sound(self, sound, volume=1.0):
+        audio_library.play_sound(sound, volume)
+
+    # Остановить воспроизведение звука
+    def stop_sound(self, sound):
+        audio_library.stop_sound(sound)
+
+    # Удалить звук из памяти
+    def unload_sound(self, sound):
+        audio_library.unload_sound(sound)
+
+# Создаем экземпляр SoundManager для управления звуками в игре
+sound_manager = SoundManager()
