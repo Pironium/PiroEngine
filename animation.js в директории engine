@@ -1,0 +1,84 @@
+// engine/animation.js
+
+class Animation {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    this.ctx = this.canvas.getContext('2d');
+    this.frames = [];
+    this.currentFrame = 0;
+    this.isPlaying = false;
+  }
+
+  addFrame(frame) {
+    this.frames.push(frame);
+  }
+
+  play() {
+    if (!this.isPlaying) {
+      this.isPlaying = true;
+      this.animateFrame();
+    }
+  }
+
+  stop() {
+    this.isPlaying = false;
+  }
+
+  animateFrame() {
+    if (this.isPlaying) {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      const currentFrame = this.frames[this.currentFrame];
+      currentFrame.draw(this.ctx);
+      this.currentFrame = (this.currentFrame + 1) % this.frames.length;
+      requestAnimationFrame(() => this.animateFrame());
+    }
+  }
+}
+
+class Frame {
+  constructor() {
+    this.objects = [];
+  }
+
+  addObject(object) {
+    this.objects.push(object);
+  }
+
+  draw(ctx) {
+    for (const object of this.objects) {
+      object.draw(ctx);
+    }
+  }
+}
+
+class Sphere {
+  constructor(x, y, radius) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+  }
+
+  draw(ctx) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'blue';
+    ctx.fill();
+    ctx.closePath();
+  }
+}
+
+class Cube {
+  constructor(x, y, size) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+  }
+
+  draw(ctx) {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+  }
+}
+
+// Export the Animation class
+export { Animation, Frame, Sphere, Cube };
