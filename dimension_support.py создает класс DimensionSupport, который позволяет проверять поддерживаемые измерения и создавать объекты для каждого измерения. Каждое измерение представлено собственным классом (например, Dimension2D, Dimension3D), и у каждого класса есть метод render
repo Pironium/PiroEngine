@@ -1,0 +1,82 @@
+# dimension_support.py
+
+class DimensionSupport:
+    def __init__(self):
+        self.supported_dimensions = [2, 3, 4, 5, 6, 7, 9999]
+
+    def is_dimension_supported(self, dimension):
+        return dimension in self.supported_dimensions
+
+    def create_dimension(self, dimension):
+        if dimension == 2:
+            return Dimension2D()
+        elif dimension == 3:
+            return Dimension3D()
+        elif dimension == 4:
+            return Dimension4D()
+        elif dimension == 5:
+            return Dimension5D()
+        elif dimension == 6:
+            return Dimension6D()
+        elif dimension == 7:
+            return Dimension7D()
+        elif dimension == 9999:
+            return Dimension9999D()
+        else:
+            raise ValueError("Unsupported dimension")
+
+class Dimension2D:
+    def __init__(self):
+        self.name = "2D"
+
+    def render(self):
+        # 2D rendering logic here
+        pass
+
+class Dimension3D:
+    def __init__(self):
+        self.name = "3D"
+
+    def render(self):
+        # 3D rendering logic here
+        pass
+
+class Dimension4D:
+    def __init__(self):
+        self.name = "4D"
+
+    def render(self):
+        # 4D rendering logic here
+        pass
+
+class Dimension5D:
+    def __init__(self):
+        self.name = "5D"
+
+    def render(self):
+        # 5D rendering logic here
+        pass
+
+class Dimension6D:
+    def __init__(self):
+        self.name = "6D"
+
+    def render(self):
+        # 6D rendering logic here
+        pass
+
+class Dimension7D:
+    def __init__(self):
+        self.name = "7D"
+
+    def render(self):
+        # 7D rendering logic here
+        pass
+
+class Dimension9999D:
+    def __init__(self):
+        self.name = "9999D"
+
+    def render(self):
+        # 9999D rendering logic here
+        pass
