@@ -1,0 +1,54 @@
+# PiroScript Plugin Handler
+
+# Define a dictionary to store loaded plugins
+loaded_plugins = {}
+
+# Function to load a plugin
+def load_plugin(plugin_name, plugin_code):
+    try:
+        # Use dynamic execution to load the plugin code
+        exec(plugin_code)
+        # Add the loaded plugin to the dictionary
+        loaded_plugins[plugin_name] = locals()[plugin_name]
+        print(f"Plugin '{plugin_name}' loaded successfully.")
+    except Exception as e:
+        print(f"Failed to load plugin '{plugin_name}': {str(e)}")
+
+# Function to execute a loaded plugin
+def execute_plugin(plugin_name, *args, **kwargs):
+    if plugin_name in loaded_plugins:
+        try:
+            plugin_function = loaded_plugins[plugin_name]
+            result = plugin_function(*args, **kwargs)
+            return result
+        except Exception as e:
+            print(f"Error executing plugin '{plugin_name}': {str(e)}")
+    else:
+        print(f"Plugin '{plugin_name}' is not loaded.")
+
+# Function to list loaded plugins
+def list_loaded_plugins():
+    print("Loaded Plugins:")
+    for plugin_name in loaded_plugins:
+        print(f"- {plugin_name}")
+
+# Example plugin
+def example_plugin(*args, **kwargs):
+    print("This is an example plugin.")
+    print("Arguments:", args)
+    print("Keyword Arguments:", kwargs)
+    return "Example Plugin Result"
+
+# Usage example
+if __name__ == "__main__":
+    # Load an example plugin
+    load_plugin("example_plugin", """
+def example_plugin(*args, **kwargs):
+    print("This is an example plugin.")
+    print("Arguments:", args)
+    print("Keyword Arguments:", kwargs)
+    return "Example Plugin Result"
+""")
+    # Execute the loaded plugin
+    result = execute_plugin("example_plugin", 1, 2, name="John")
+    print("Plugin Result:", result)
