@@ -1,0 +1,39 @@
+# Water Effects Module
+
+# Define a WaterEffect class that encapsulates water-related functionality.
+class WaterEffect:
+    def __init__(self, width, height, resolution):
+        self.width = width
+        self.height = height
+        self.resolution = resolution
+        self.water_surface = self.generate_water_surface()
+
+    def generate_water_surface(self):
+        # Generate a realistic water surface using Perlin noise.
+        water_surface = []
+
+        for y in range(self.height):
+            row = []
+            for x in range(self.width):
+                # Calculate the height of the water surface using Perlin noise.
+                height = noise(x / self.resolution, y / self.resolution)
+                row.append(height)
+            water_surface.append(row)
+
+        return water_surface
+
+    def apply_wave(self, x, y, strength):
+        # Apply a wave effect to the water surface at a specific location.
+        if 0 <= x < self.width and 0 <= y < self.height:
+            self.water_surface[y][x] += strength
+
+    def get_water_height(self, x, y):
+        # Get the height of the water surface at a specific location.
+        if 0 <= x < self.width and 0 <= y < self.height:
+            return self.water_surface[y][x]
+        return 0.0
+
+# Example usage:
+# water = WaterEffect(800, 600, 10)
+# water.apply_wave(400, 300, 0.5)
+# height = water.get_water_height(200, 150)
