@@ -1,0 +1,24 @@
+# PiroScript (.pis) code for Graphics Optimization Module
+
+# Import necessary libraries for GPU optimization
+import nv_gpu_optimization as nv_opt
+import amd_gpu_optimization as amd_opt
+
+# Define a function to optimize graphics rendering based on the GPU manufacturer
+def optimize_graphics(game_scene):
+    if nv_opt.is_nvidia_gpu_available():
+        nv_opt.enable_nvidia_optimization()
+        print("Nvidia GPU optimization enabled for", game_scene)
+    elif amd_opt.is_amd_gpu_available():
+        amd_opt.enable_amd_optimization()
+        print("AMD GPU optimization enabled for", game_scene)
+    else:
+        print("No compatible GPU found for optimization in", game_scene)
+
+# Main function to test GPU optimization
+def main():
+    game_scene = "SampleGameScene"
+    optimize_graphics(game_scene)
+
+if __name__ == "__main__":
+    main()
