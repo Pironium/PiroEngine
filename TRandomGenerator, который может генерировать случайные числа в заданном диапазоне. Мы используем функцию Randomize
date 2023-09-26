@@ -1,0 +1,32 @@
+unit RandomGenerator;
+
+interface
+
+type
+  TRandomGenerator = class
+  public
+    constructor Create;
+    function GenerateRandomInRange(minValue, maxValue: Integer): Integer;
+  end;
+
+implementation
+
+uses
+  SysUtils, DateUtils;
+
+constructor TRandomGenerator.Create;
+begin
+  // Инициализация генератора случайных чисел
+  Randomize;
+end;
+
+function TRandomGenerator.GenerateRandomInRange(minValue, maxValue: Integer): Integer;
+begin
+  if minValue > maxValue then
+    raise Exception.Create('Min value cannot be greater than max value.');
+
+  // Генерация случайного числа в заданном диапазоне
+  Result := minValue + Random(Abs(maxValue - minValue) + 1);
+end;
+
+end.
