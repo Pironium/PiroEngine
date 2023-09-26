@@ -1,0 +1,39 @@
+// engine/translator.cpp
+
+#include <iostream>
+#include <string>
+#include <map>
+
+class CodeTranslator {
+public:
+    CodeTranslator() {
+        // Здесь мы инициализируем словарь, который будет содержать пары (язык программирования, C++ код)
+        languageMappings["Python"] = "Python code to C++ translation here";
+        languageMappings["Java"] = "Java code to C++ translation here";
+        languageMappings["JavaScript"] = "JavaScript code to C++ translation here";
+        // Добавьте другие языки и соответствующие им переводы
+    }
+
+    std::string Translate(const std::string& sourceCode, const std::string& sourceLanguage) {
+        if (languageMappings.find(sourceLanguage) != languageMappings.end()) {
+            // Найден соответствующий перевод для языка программирования
+            return languageMappings[sourceLanguage];
+        } else {
+            return "Translation not available for the specified language.";
+        }
+    }
+
+private:
+    std::map<std::string, std::string> languageMappings;
+};
+
+int main() {
+    CodeTranslator translator;
+    std::string sourceCode = "Your source code here";
+    std::string sourceLanguage = "Python"; // Замените на желаемый язык программирования
+
+    std::string translatedCode = translator.Translate(sourceCode, sourceLanguage);
+    std::cout << "Translated Code in C++:\n" << translatedCode << std::endl;
+
+    return 0;
+}
