@@ -1,0 +1,45 @@
+# Directory: engine/core/
+# File: plugin_support.pis
+
+# PiroEngine Plugin Support
+#
+# This module provides support for plugins in PiroScript.
+# It allows developers to extend the engine's functionality
+# through custom plugins written in PiroScript.
+
+# Define a class for managing plugins
+class PluginManager:
+    def __init__(self):
+        self.plugins = []
+
+    # Load a plugin
+    def load_plugin(self, plugin_filename):
+        try:
+            plugin_code = load_plugin_code(plugin_filename)
+            plugin = execute_plugin_code(plugin_code)
+            self.plugins.append(plugin)
+        except Exception as e:
+            log_error(f"Failed to load plugin '{plugin_filename}': {str(e)}")
+
+    # Execute a plugin's code
+    def execute_plugin_code(self, code):
+        try:
+            exec(code)
+        except Exception as e:
+            log_error(f"Error executing plugin code: {str(e)}")
+
+# Function to load plugin code from a file
+def load_plugin_code(plugin_filename):
+    try:
+        with open(plugin_filename, 'r') as file:
+            return file.read()
+    except Exception as e:
+        log_error(f"Failed to load plugin code from '{plugin_filename}': {str(e)}")
+        return ""
+
+# Function to log an error message
+def log_error(message):
+    print(f"ERROR: {message}")
+
+# Instantiate the PluginManager
+plugin_manager = PluginManager()
