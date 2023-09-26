@@ -1,0 +1,59 @@
+# PiroScript (.pis) code for advanced lighting calculations
+import math
+import piroengine
+
+class LightingManager:
+    def __init__(self, scene):
+        self.scene = scene
+        self.lights = []
+
+    def add_light(self, light):
+        self.lights.append(light)
+
+    def calculate_lighting(self):
+        for light in self.lights:
+            for obj in self.scene.objects:
+                if obj.has_mesh() and obj.material.has_diffuse_color():
+                    normal = obj.mesh.calculate_vertex_normals()
+                    for vertex in obj.mesh.vertices:
+                        intensity = self.calculate_light_intensity(obj.position, vertex, normal, light)
+                        obj.material.diffuse_color *= intensity
+
+    def calculate_light_intensity(self, position, vertex, normal, light):
+        light_dir = light.position - position
+        light_distance = light_dir.length()
+        light_dir.normalize()
+        dot_product = normal.dot(light_dir)
+
+        if dot_product > 0:
+            # Lambertian reflection model
+            diffuse_intensity = dot_product / (math.pi * light_distance**2)
+            # Add specular highlights
+            specular_intensity = self.calculate_specular_highlight(vertex, normal, light_dir, light)
+            total_intensity = (diffuse_intensity + specular_intensity) * light.intensity
+            return total_intensity
+        else:
+            return 0
+
+    def calculate_specular_highlight(self, vertex, normal, light_dir, light):
+        # Phong reflection model for specular highlights
+        viewer_dir = piroengine.camera.get_viewer_direction()
+        reflection_dir = (normal * 2 * light_dir.dot(normal) - light_dir).normalize()
+        specular_intensity = max(viewer_dir.dot(reflection_dir), 0) ** obj.material.specular_exponent
+        return specular_intensity
+
+# Example usage:
+scene = piroengine.Scene()
+light_manager = LightingManager(scene)
+
+# Create and add lights to the scene
+directional_light = piroengine.Light(position=(0, 10, 0), intensity=1.0)
+point_light = piroengine.Light(position=(5, 2, 5), intensity=0.8)
+light_manager.add_light(directional_light)
+light_manager.add_light(point_light)
+
+# Calculate and apply lighting to the scene
+light_manager.calculate_lighting()
+
+# Render the scene
+scene.render()
