@@ -1,0 +1,40 @@
+// PiroScript code for TextureDistortion.pis
+
+// Define a new function for texture distortion
+func applyTextureDistortion(object: GameObject, distortionFactor: Float) {
+    // Check if the object has a texture
+    guard let texture = object.texture else {
+        print("Error: Object does not have a texture.")
+        return
+    }
+    
+    // Create a new distorted texture based on the original texture
+    let distortedTexture = createDistortedTexture(originalTexture: texture, distortionFactor: distortionFactor)
+    
+    // Apply the distorted texture to the object
+    object.setTexture(distortedTexture)
+}
+
+// Define a function to create a distorted texture
+func createDistortedTexture(originalTexture: Texture, distortionFactor: Float) -> Texture {
+    // Implement texture distortion algorithm here
+    // For example, you can use perlin noise to generate distortion
+    
+    // Apply distortion factor to the texture coordinates
+    let distortedCoordinates = originalTexture.coordinates.map { coordinate in
+        // Apply distortion factor to U and V coordinates
+        let distortedU = coordinate.u + distortionFactor * /* Perlin noise function */;
+        let distortedV = coordinate.v + distortionFactor * /* Perlin noise function */;
+        return TextureCoordinate(u: distortedU, v: distortedV)
+    }
+    
+    // Create a new texture with distorted coordinates
+    let distortedTexture = Texture(coordinates: distortedCoordinates, image: originalTexture.image)
+    
+    return distortedTexture
+}
+
+// Example usage:
+let gameObject = GameObject()
+gameObject.setTexture(originalTexture)
+applyTextureDistortion(object: gameObject, distortionFactor: 0.1)
