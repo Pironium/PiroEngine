@@ -1,0 +1,32 @@
+{
+    "en": {
+        "welcome_message": "Welcome to PiroEngine!",
+        "play_button": "Play",
+        "settings_button": "Settings",
+        "exit_button": "Exit"
+    },
+    "fr": {
+        "welcome_message": "Bienvenue dans PiroEngine !",
+        "play_button": "Jouer",
+        "settings_button": "Paramètres",
+        "exit_button": "Quitter"
+    },
+    "es": {
+        "welcome_message": "¡Bienvenido a PiroEngine!",
+        "play_button": "Jugar",
+        "settings_button": "Configuración",
+        "exit_button": "Salir"
+    },
+    "de": {
+        "welcome_message": "Willkommen bei PiroEngine!",
+        "play_button": "Spielen",
+        "settings_button": "Einstellungen",
+        "exit_button": "Beenden"
+    },
+    "ru": {
+        "welcome_message": "Добро пожаловать в PiroEngine!",
+        "play_button": "Играть",
+        "settings_button": "Настройки",
+        "exit_button": "Выход"
+    }
+}
