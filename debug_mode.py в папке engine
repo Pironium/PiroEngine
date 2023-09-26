@@ -1,0 +1,34 @@
+# engine/debug_mode.py
+
+class DebugMode:
+    def __init__(self):
+        self.memory_usage = 0
+        self.cpu_usage = 0
+        self.gpu_usage = 0
+
+    def monitor_memory(self, game_memory):
+        # Мониторим использование памяти игры
+        self.memory_usage = game_memory
+
+    def monitor_cpu(self, game_cpu_load):
+        # Мониторим нагрузку на процессор
+        self.cpu_usage = game_cpu_load
+
+    def monitor_gpu(self, game_gpu_load):
+        # Мониторим нагрузку на видеокарту
+        self.gpu_usage = game_gpu_load
+
+    def print_stats(self):
+        # Выводим статистику
+        print("Debug Mode Statistics:")
+        print(f"Memory Usage: {self.memory_usage} MB")
+        print(f"CPU Usage: {self.cpu_usage}%")
+        print(f"GPU Usage: {self.gpu_usage}%")
+
+if __name__ == "__main__":
+    # Пример использования DebugMode
+    debug_mode = DebugMode()
+    debug_mode.monitor_memory(512)  # Использование 512 МБ памяти
+    debug_mode.monitor_cpu(30)      # 30% нагрузки на CPU
+    debug_mode.monitor_gpu(60)      # 60% нагрузки на GPU
+    debug_mode.print_stats()
