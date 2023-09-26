@@ -1,0 +1,35 @@
+class ServerInteraction {
+  constructor(serverAddress, port) {
+    this.serverAddress = serverAddress;
+    this.port = port;
+  }
+
+  connect() {
+    // Устанавливаем соединение с сервером
+    // Используем this.serverAddress и this.port для подключения
+    // Реализация подключения к серверу...
+    console.log(`Connected to server at ${this.serverAddress}:${this.port}`);
+  }
+
+  disconnect() {
+    // Отключаемся от сервера
+    // Реализация отключения от сервера...
+    console.log('Disconnected from server');
+  }
+
+  sendData(data) {
+    // Отправляем данные на сервер
+    // Реализация отправки данных...
+    console.log('Data sent to server:', data);
+  }
+
+  receiveData() {
+    // Получаем данные от сервера
+    // Реализация получения данных...
+    const receivedData = 'Received data from server';
+    console.log(receivedData);
+    return receivedData;
+  }
+}
+
+module.exports = ServerInteraction;
