@@ -1,0 +1,46 @@
+# Директория, в которой будет файл: engine/utils
+# Название файла: translation_manager.py
+
+class TranslationManager:
+    def __init__(self):
+        self.translations = {}
+
+    def add_translation(self, language, translation_data):
+        if language not in self.translations:
+            self.translations[language] = {}
+        self.translations[language] = {**self.translations[language], **translation_data}
+
+    def get_translation(self, language, key):
+        if language in self.translations and key in self.translations[language]:
+            return self.translations[language][key]
+        else:
+            return f"Translation not found for key: {key} in language: {language}"
+
+# Директория, в которой будет файл: engine/core
+# Название файла: game_engine.py
+
+class GameEngine:
+    def __init__(self):
+        self.translation_manager = TranslationManager()
+
+    def load_translations(self, language):
+        try:
+            with open(f'translations/{language}.json', 'r', encoding='utf-8') as translation_file:
+                translation_data = json.load(translation_file)
+                self.translation_manager.add_translation(language, translation_data)
+        except FileNotFoundError:
+            print(f"Translation file not found for language: {language}")
+
+    def translate(self, language, key):
+        return self.translation_manager.get_translation(language, key)
+
+# Директория, в которой будет файл: translations
+# Название файла: english.json
+
+{
+    "greeting": "Hello, World!",
+    "menu": "Main Menu",
+    "play": "Play",
+    "settings": "Settings",
+    "exit": "Exit"
+}
