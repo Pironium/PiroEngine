@@ -1,0 +1,31 @@
+# sound_support.pis
+
+# Импортируем необходимые модули
+import audio_engine.pis as audio
+
+# Класс для управления динамическими звуками
+class DynamicSoundManager:
+    def __init__(self):
+        self.sounds = {}  # Словарь для хранения звуков
+
+    def load_sound(self, sound_id, sound_file):
+        # Загрузка звука из файла и добавление его в словарь
+        sound = audio.load_sound(sound_file)
+        self.sounds[sound_id] = sound
+
+    def play_sound(self, sound_id):
+        # Воспроизведение звука по его идентификатору
+        if sound_id in self.sounds:
+            audio.play_sound(self.sounds[sound_id])
+        else:
+            print(f"Sound '{sound_id}' not found!")
+
+    def stop_sound(self, sound_id):
+        # Остановка воспроизведения звука по его идентификатору
+        if sound_id in self.sounds:
+            audio.stop_sound(self.sounds[sound_id])
+        else:
+            print(f"Sound '{sound_id}' not found!")
+
+# Создаем экземпляр менеджера динамических звуков
+sound_manager = DynamicSoundManager()
