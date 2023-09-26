@@ -1,0 +1,62 @@
+// piroengine_functions.js
+
+// Функция для создания уникальных 3D объектов
+function createUnique3DObject(objectType, parameters) {
+    if (objectType === "sphere") {
+        // Создаем сферу с заданными параметрами
+        const sphere = new Sphere(parameters.radius, parameters.color);
+        return sphere;
+    } else if (objectType === "cube") {
+        // Создаем куб с заданными параметрами
+        const cube = new Cube(parameters.sideLength, parameters.color);
+        return cube;
+    } else if (objectType === "custom") {
+        // Создаем пользовательский 3D объект на основе заданных параметров
+        const customObject = new Custom3DObject(parameters);
+        return customObject;
+    } else {
+        // Если переданный тип объекта не поддерживается, возвращаем null
+        return null;
+    }
+}
+
+// Класс для представления сферы
+class Sphere {
+    constructor(radius, color) {
+        this.radius = radius;
+        this.color = color;
+    }
+
+    render() {
+        // Рендеринг сферы с заданным радиусом и цветом
+        // Реализация рендеринга опущена для простоты
+        console.log(`Rendered a ${this.color} sphere with radius ${this.radius}`);
+    }
+}
+
+// Класс для представления куба
+class Cube {
+    constructor(sideLength, color) {
+        this.sideLength = sideLength;
+        this.color = color;
+    }
+
+    render() {
+        // Рендеринг куба с заданной длиной стороны и цветом
+        // Реализация рендеринга опущена для простоты
+        console.log(`Rendered a ${this.color} cube with side length ${this.sideLength}`);
+    }
+}
+
+// Класс для представления пользовательского 3D объекта
+class Custom3DObject {
+    constructor(parameters) {
+        this.parameters = parameters;
+    }
+
+    render() {
+        // Рендеринг пользовательского 3D объекта на основе заданных параметров
+        // Реализация рендеринга опущена для простоты
+        console.log(`Rendered a custom 3D object with parameters: ${JSON.stringify(this.parameters)}`);
+    }
+}
