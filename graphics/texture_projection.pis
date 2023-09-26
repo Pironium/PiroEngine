@@ -1,0 +1,19 @@
+# graphics/texture_projection.pis
+
+# Эта функция применяет текстурную проекцию на модель
+# для создания уникальных текстурных эффектов.
+def apply_texture_projection(model, texture_projection_matrix):
+    # Проверка наличия текстуры и матрицы проекции
+    if model.has_texture() and texture_projection_matrix is not None:
+        # Применяем текстурную проекцию к вершинам модели
+        for vertex in model.vertices:
+            vertex.apply_texture_projection(texture_projection_matrix)
+        # Обновляем текстуры визуально
+        model.update_texture()
+    else:
+        print("Ошибка: Модель не имеет текстуры или отсутствует матрица проекции.")
+
+# Пример использования функции
+model = load_model("example_model.obj")
+projection_matrix = create_projection_matrix()
+apply_texture_projection(model, projection_matrix)
