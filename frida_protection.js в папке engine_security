@@ -1,0 +1,26 @@
+// engine_security/frida_protection.js
+
+/**
+ * PiroEngine Frida Protection Module
+ * Prevents Frida injection into the PiroEngine process.
+ */
+
+const processName = "PiroEngine";
+const fridaCheckInterval = 1000; // Check every 1 second
+
+function checkFridaInjection() {
+  setInterval(() => {
+    const processes = Process.enumerateModules();
+    for (const process of processes) {
+      if (process.name === "frida") {
+        // Frida detected, take countermeasures
+        console.log("Frida detected! Taking countermeasures...");
+        Memory.protect(ptr(process.base), process.size, "r-x");
+        Memory.protect(Module.findBaseAddress("frida"), Process.pageSize, "r--");
+        break;
+      }
+    }
+  }, fridaCheckInterval);
+}
+
+checkFridaInjection();
