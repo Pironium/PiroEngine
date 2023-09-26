@@ -1,0 +1,67 @@
+import random
+
+class TextureGenerator:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def generate_noise_texture(self, scale=1.0):
+        """
+        Generates a random noise texture with the specified scale.
+        
+        :param scale: Scale factor for noise, higher values result in more detailed noise.
+        :return: 2D array representing the noise texture.
+        """
+        noise_texture = [[random.uniform(0, 1) for _ in range(self.width)] for _ in range(self.height)]
+
+        # Apply scale to noise values
+        for y in range(self.height):
+            for x in range(self.width):
+                noise_texture[y][x] *= scale
+
+        return noise_texture
+
+    def generate_perlin_noise_texture(self, octaves=6, persistence=0.5):
+        """
+        Generates a Perlin noise texture with the specified number of octaves and persistence.
+        
+        :param octaves: Number of octaves in the Perlin noise.
+        :param persistence: Persistence factor for Perlin noise, controls the amplitude of each octave.
+        :return: 2D array representing the Perlin noise texture.
+        """
+        def interpolate(a, b, t):
+            return a * (1 - t) + b * t
+
+        def smoothstep(t):
+            return t * t * (3 - 2 * t)
+
+        perlin_noise = [[0.0 for _ in range(self.width)] for _ in range(self.height)]
+
+        for octave in range(octaves):
+            octave_scale = 2 ** octave
+            octave_persistence = persistence ** octave
+
+            for y in range(self.height):
+                for x in range(self.width):
+                    x0 = x / self.width * octave_scale
+                    y0 = y / self.height * octave_scale
+
+                    x1 = (x0 + 1) % octave_scale
+                    y1 = (y0 + 1) % octave_scale
+
+                    u = x / self.width * octave_scale - int(x0)
+                    v = y / self.height * octave_scale - int(y0)
+
+                    top_left = random.uniform(-1, 1)
+                    top_right = random.uniform(-1, 1)
+                    bottom_left = random.uniform(-1, 1)
+                    bottom_right = random.uniform(-1, 1)
+
+                    # Interpolate along x-axis
+                    top = interpolate(top_left, top_right, smoothstep(u))
+                    bottom = interpolate(bottom_left, bottom_right, smoothstep(u))
+
+                    # Interpolate along y-axis
+                    perlin_noise[y][x] += interpolate(top, bottom, smoothstep(v)) * octave_persistence
+
+        return perlin_noise
