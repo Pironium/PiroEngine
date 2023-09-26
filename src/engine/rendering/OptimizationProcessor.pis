@@ -1,0 +1,21 @@
+# PiroScript (.pis) code for optimizing rendering on Intel and AMD processors
+
+function optimizeRenderingForIntelAndAMD(processorType: string, scene: Scene) {
+    if (processorType == "Intel") {
+        // Intel-specific optimization code
+        for mesh in scene.meshes {
+            if (mesh.vertexCount > 1000) {
+                mesh.optimizeForIntel();
+            }
+        }
+    } else if (processorType == "AMD") {
+        // AMD-specific optimization code
+        for mesh in scene.meshes {
+            if (mesh.triangleCount > 5000) {
+                mesh.optimizeForAMD();
+            }
+        }
+    } else {
+        log("Unsupported processor type: " + processorType);
+    }
+}
