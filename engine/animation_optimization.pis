@@ -1,0 +1,28 @@
+# PiroScript (.pis) code for animation optimization
+
+# Import the necessary libraries
+import PiroEngine
+import NvidiaOptimization
+import AmdOptimization
+
+# Define a function to optimize animations for Nvidia GPUs
+function optimize_for_nvidia(animation):
+    NvidiaOptimization.optimize_animation(animation)
+
+# Define a function to optimize animations for AMD GPUs
+function optimize_for_amd(animation):
+    AmdOptimization.optimize_animation(animation)
+
+# Main function to optimize animations based on the GPU type
+function optimize_animation(animation, gpu_type):
+    if gpu_type == "Nvidia":
+        optimize_for_nvidia(animation)
+    elif gpu_type == "AMD":
+        optimize_for_amd(animation)
+    else:
+        print("Unsupported GPU type")
+
+# Usage example
+animation_to_optimize = load_animation("example_animation")
+gpu_type = get_gpu_type()
+optimize_animation(animation_to_optimize, gpu_type)
