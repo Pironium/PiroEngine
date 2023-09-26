@@ -1,0 +1,47 @@
+// Директория: PiroEngine/Advertising
+// Название файла: advertising_support.swift
+
+import Foundation
+
+// Класс, отвечающий за управление рекламными объявлениями
+class AdvertisingManager {
+    
+    // Структура, представляющая рекламное объявление
+    struct Ad {
+        let title: String
+        let content: String
+        let imageURL: String
+        let clickURL: String
+    }
+    
+    // Массив для хранения загруженных рекламных объявлений
+    private var ads: [Ad] = []
+    
+    // Метод для загрузки рекламных объявлений с сервера
+    func loadAds() {
+        // Здесь мы бы реализовали логику загрузки рекламы с сервера
+        // Но для примера, давайте просто добавим несколько объявлений вручную
+        
+        ads.append(Ad(title: "Ad 1", content: "Check out our new game!", imageURL: "https://example.com/ad1.png", clickURL: "https://example.com/ad1"))
+        
+        ads.append(Ad(title: "Ad 2", content: "Get the latest updates!", imageURL: "https://example.com/ad2.png", clickURL: "https://example.com/ad2"))
+        
+        ads.append(Ad(title: "Ad 3", content: "Special offer for gamers!", imageURL: "https://example.com/ad3.png", clickURL: "https://example.com/ad3"))
+    }
+    
+    // Метод для отображения рекламы в игре
+    func showAd() -> Ad? {
+        guard !ads.isEmpty else {
+            return nil // Нет доступных рекламных объявлений
+        }
+        
+        // Выбираем случайное рекламное объявление из списка
+        let randomIndex = Int.random(in: 0..<ads.count)
+        let selectedAd = ads[randomIndex]
+        
+        // Здесь мы бы добавили логику отображения рекламы в игре
+        // Например, показываем изображение и обрабатываем нажатие на объявление
+        
+        return selectedAd
+    }
+}
