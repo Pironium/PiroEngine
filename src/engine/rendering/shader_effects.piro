@@ -1,0 +1,28 @@
+# This file contains complex shader effects for PiroEngine
+
+class ShaderEffects:
+    def __init__(self):
+        self.effects = []
+
+    def add_effect(self, effect):
+        self.effects.append(effect)
+
+    def apply_effects(self, object):
+        for effect in self.effects:
+            object.apply_effect(effect)
+
+class BlurEffect:
+    def __init__(self, strength):
+        self.strength = strength
+
+    def apply_effect(self, object):
+        # Apply a blur effect with the specified strength to the object
+        pass
+
+class BloomEffect:
+    def __init__(self, intensity):
+        self.intensity = intensity
+
+    def apply_effect(self, object):
+        # Apply a bloom effect with the specified intensity to the object
+        pass
