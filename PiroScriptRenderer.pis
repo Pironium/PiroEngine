@@ -1,0 +1,33 @@
+// PiroScriptRenderer.pis
+
+// Определение новой функции для создания 3D эффектов
+func create3DEffect(object: GameObject, effectType: String) {
+    // Проверка типа эффекта
+    if effectType == "shiny" {
+        // Расчет и применение сверкающего эффекта к объекту
+        let shimmer = ShinyEffect()
+        object.addEffect(shimmer)
+    } else if effectType == "vortex" {
+        // Расчет и применение вихревого эффекта к объекту
+        let vortex = VortexEffect()
+        object.addEffect(vortex)
+    } else {
+        print("Неподдерживаемый тип эффекта: \(effectType)")
+    }
+}
+
+// Класс для сверкающего эффекта
+class ShinyEffect {
+    func apply(object: GameObject) {
+        // Реализация сверкающего эффекта
+        // ...
+    }
+}
+
+// Класс для вихревого эффекта
+class VortexEffect {
+    func apply(object: GameObject) {
+        // Реализация вихревого эффекта
+        // ...
+    }
+}
