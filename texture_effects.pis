@@ -1,0 +1,32 @@
+// PiroScript code for generating texture effects
+
+// Define a function to apply a marble texture effect to a surface
+func applyMarbleTexture(surface: Surface, scale: Float) {
+    for x in 0..<surface.width {
+        for y in 0..<surface.height {
+            let noise = PerlinNoise.generate(x: Float(x) * scale, y: Float(y) * scale, z: 0.0)
+            let brightness = (noise + 1.0) / 2.0 // Map noise to [0, 1]
+            let color = Color(r: brightness, g: brightness, b: brightness)
+            surface.setPixel(x, y, color)
+        }
+    }
+}
+
+// Define a function to apply a fire effect to a surface
+func applyFireEffect(surface: Surface, intensity: Float) {
+    for x in 0..<surface.width {
+        for y in 0..<surface.height {
+            let noise = PerlinNoise.generate(x: Float(x) * 0.1, y: Float(y) * 0.1, z: 0.0)
+            let brightness = (noise + 1.0) / 2.0 // Map noise to [0, 1]
+            let color = Color(r: 1.0, g: brightness, b: 0.0) // Reddish fire effect
+            surface.setPixel(x, y, color)
+        }
+    }
+}
+
+// Usage example:
+let objectSurface = Surface(width: 512, height: 512)
+applyMarbleTexture(surface: objectSurface, scale: 0.05)
+applyFireEffect(surface: objectSurface, intensity: 0.8)
+
+// Now the objectSurface contains the generated texture with marble and fire effects
