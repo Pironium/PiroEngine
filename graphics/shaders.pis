@@ -1,0 +1,38 @@
+# PiroScript (.pis) code for Shader Management
+
+# Define a class for managing shaders
+class ShaderManager:
+    def __init__(self):
+        self.shaders = {}
+
+    def load_shader(self, shader_name, shader_source):
+        # Load and compile the shader from the provided source code
+        shader = compile_shader(shader_source)
+        self.shaders[shader_name] = shader
+
+    def use_shader(self, shader_name):
+        # Activate the specified shader for rendering
+        if shader_name in self.shaders:
+            activate_shader(self.shaders[shader_name])
+        else:
+            raise Exception("Shader '{}' not found.".format(shader_name))
+
+    def set_uniform(self, shader_name, uniform_name, value):
+        # Set a uniform variable in the specified shader
+        if shader_name in self.shaders:
+            set_uniform(self.shaders[shader_name], uniform_name, value)
+        else:
+            raise Exception("Shader '{}' not found.".format(shader_name))
+
+# Example usage
+if __name__ == "__main__":
+    shader_manager = ShaderManager()
+    vertex_shader_source = """
+    // Vertex shader source code here
+    """
+    fragment_shader_source = """
+    // Fragment shader source code here
+    """
+    shader_manager.load_shader("my_shader", vertex_shader_source + fragment_shader_source)
+    shader_manager.use_shader("my_shader")
+    shader_manager.set_uniform("my_shader", "u_resolution", [800, 600])
