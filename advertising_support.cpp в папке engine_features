@@ -1,0 +1,59 @@
+// engine_features/advertising_support.cpp
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+// Define an Advertisement class to manage ads
+class Advertisement {
+public:
+    Advertisement(const std::string& content) : content_(content) {}
+
+    void Display() {
+        std::cout << "Displaying ad: " << content_ << std::endl;
+    }
+
+private:
+    std::string content_;
+};
+
+// Define an AdManager to handle ad-related operations
+class AdManager {
+public:
+    void LoadAds(const std::vector<std::string>& adContents) {
+        for (const std::string& content : adContents) {
+            Advertisement ad(content);
+            ads_.push_back(ad);
+        }
+    }
+
+    void ShowRandomAd() {
+        if (!ads_.empty()) {
+            int randomIndex = rand() % ads_.size();
+            ads_[randomIndex].Display();
+        } else {
+            std::cout << "No ads available." << std::endl;
+        }
+    }
+
+private:
+    std::vector<Advertisement> ads_;
+};
+
+// Main function to test advertising support
+int main() {
+    AdManager adManager;
+    std::vector<std::string> sampleAds = {
+        "Ad for Game X",
+        "Ad for Game Y",
+        "Special Offer: 50% off!",
+        "Try our new Game Z!"
+    };
+
+    adManager.LoadAds(sampleAds);
+
+    // Simulate displaying a random ad
+    adManager.ShowRandomAd();
+
+    return 0;
+}
