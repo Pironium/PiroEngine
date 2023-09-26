@@ -1,0 +1,33 @@
+# Директория, в которой будет файл/platform_compilation.py
+
+import os
+
+def compile_game_for_platform(game_directory, platform):
+    """
+    Компилирует игру для указанной платформы.
+
+    :param game_directory: Директория с игрой.
+    :param platform: Целевая платформа (Windows/Android/iPhone/macOS/Linux/PS4/Xbox One).
+    :return: True, если компиляция успешна, False в противном случае.
+    """
+    if not os.path.exists(game_directory):
+        print("Ошибка: Директория с игрой не существует.")
+        return False
+
+    if platform not in ["Windows", "Android", "iPhone", "macOS", "Linux", "PS4", "Xbox One"]:
+        print("Ошибка: Неподдерживаемая платформа.")
+        return False
+
+    print(f"Компилируем игру из директории {game_directory} для платформы {platform}...")
+    # Здесь бы был код компиляции игры для выбранной платформы.
+    # Допишите свой код здесь.
+    print(f"Игра успешно скомпилирована для {platform}.")
+    return True
+
+# Пример использования:
+game_directory = "my_game_directory"
+platform = "Windows"
+if compile_game_for_platform(game_directory, platform):
+    print("Игра успешно скомпилирована!")
+else:
+    print("Не удалось скомпилировать игру.")
