@@ -1,0 +1,35 @@
+# ShaderGenerator.pis - PiroScript Shader Generator
+
+class ShaderGenerator:
+    private shaderCode: string
+
+    # Инициализируем антогенератор шейдеров
+    constructor() {
+        this.shaderCode = ""
+    }
+
+    # Добавляем инструкцию для генерации шейдера
+    function addInstruction(instruction: string) {
+        this.shaderCode += instruction + "\n"
+    }
+
+    # Генерируем и получаем шейдер
+    function generateShader(): string {
+        return this.shaderCode
+    }
+
+    # Добавляем функцию для установки параметров шейдера
+    function setShaderParameter(parameterName: string, value: any) {
+        # Ваш код для установки параметров шейдера
+        # Например, можно добавить код для установки цвета или текстуры
+        this.addInstruction("set " + parameterName + " = " + value)
+    }
+
+# Пример использования антогенератора шейдеров
+var shaderGen = ShaderGenerator()
+shaderGen.setShaderParameter("color", [1.0, 0.0, 0.0])  # Установка цвета
+shaderGen.setShaderParameter("texture", "texture.png")    # Установка текстуры
+
+var generatedShader = shaderGen.generateShader()
+print("Generated Shader Code:")
+print(generatedShader)
