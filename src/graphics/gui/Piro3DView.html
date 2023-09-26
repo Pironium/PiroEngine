@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Piro3DView</title>
+  <style>
+    /* CSS styling for the 3D view */
+    .piro-3d-view {
+      width: 100%;
+      height: 100%;
+      perspective: 1200px;
+    }
+
+    .piro-3d-object {
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+
+    .piro-3d-object:hover {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="piro-3d-view">
+    <div class="piro-3d-object">
+      <!-- 3D object content goes here -->
+    </div>
+  </div>
+</body>
+</html>
