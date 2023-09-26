@@ -1,0 +1,50 @@
+# Файл: gpu_optimization.pis
+
+# Функция для оптимизации под видеокарты NVIDIA
+def optimize_for_nvidia(engine_settings):
+    if engine_settings["gpu_vendor"] == "NVIDIA":
+        engine_settings["render_quality"] = "high"
+        engine_settings["shader_compiler"] = "NVIDIA_Compiler"
+        engine_settings["parallel_rendering"] = True
+        engine_settings["texture_compression"] = "NVIDIA_Texture_Compression"
+        engine_settings["gpu_memory_management"] = "NVIDIA_Memory_Manager"
+
+# Функция для оптимизации под видеокарты AMD
+def optimize_for_amd(engine_settings):
+    if engine_settings["gpu_vendor"] == "AMD":
+        engine_settings["render_quality"] = "medium"
+        engine_settings["shader_compiler"] = "AMD_Compiler"
+        engine_settings["parallel_rendering"] = True
+        engine_settings["texture_compression"] = "AMD_Texture_Compression"
+        engine_settings["gpu_memory_management"] = "AMD_Memory_Manager"
+
+# Основная функция для оптимизации под разные видеокарты
+def optimize_for_gpu(engine_settings):
+    if engine_settings["gpu_vendor"] == "NVIDIA":
+        optimize_for_nvidia(engine_settings)
+    elif engine_settings["gpu_vendor"] == "AMD":
+        optimize_for_amd(engine_settings)
+    else:
+        engine_settings["render_quality"] = "low"
+        engine_settings["shader_compiler"] = "Generic_Compiler"
+        engine_settings["parallel_rendering"] = False
+        engine_settings["texture_compression"] = "Generic_Texture_Compression"
+        engine_settings["gpu_memory_management"] = "Generic_Memory_Manager"
+
+# Главная точка входа для оптимизации
+def main():
+    engine_settings = {
+        "gpu_vendor": "NVIDIA",  # Здесь можно указать "NVIDIA" или "AMD" для определения видеокарты
+        "render_quality": "medium",
+        "shader_compiler": "Generic_Compiler",
+        "parallel_rendering": False,
+        "texture_compression": "Generic_Texture_Compression",
+        "gpu_memory_management": "Generic_Memory_Manager"
+    }
+
+    optimize_for_gpu(engine_settings)
+    print("Engine settings after GPU optimization:")
+    print(engine_settings)
+
+# Вызываем главную функцию
+main()
