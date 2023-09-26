@@ -1,0 +1,41 @@
+// engine/effects/PiroFX.cpp
+
+#include <iostream>
+
+class PiroFX {
+public:
+    PiroFX() {
+        std::cout << "Initializing PiroFX..." << std::endl;
+        // Здесь можно выполнить необходимую инициализацию
+    }
+
+    ~PiroFX() {
+        std::cout << "Shutting down PiroFX..." << std::endl;
+        // Здесь можно выполнить необходимые действия при завершении
+    }
+
+    void applyFireEffect(int intensity) {
+        // Реализация эффекта огня с заданной интенсивностью
+        std::cout << "Applying fire effect with intensity " << intensity << std::endl;
+        // Ваш сложный код для эффекта огня здесь
+    }
+
+    void applyWaterEffect(int waveStrength) {
+        // Реализация эффекта воды с заданной силой волн
+        std::cout << "Applying water effect with wave strength " << waveStrength << std::endl;
+        // Ваш сложный код для эффекта воды здесь
+    }
+
+    // Добавьте другие сложные эффекты здесь
+
+};
+
+int main() {
+    PiroFX piroFX;
+
+    // Пример использования эффектов
+    piroFX.applyFireEffect(10);
+    piroFX.applyWaterEffect(5);
+
+    return 0;
+}
