@@ -1,0 +1,47 @@
+# parallel_worlds.py
+
+class ParallelWorldsSupport:
+    def __init__(self):
+        self.parallel_worlds = []
+
+    def create_parallel_world(self, name):
+        world = ParallelWorld(name)
+        self.parallel_worlds.append(world)
+        return world
+
+    def get_all_parallel_worlds(self):
+        return self.parallel_worlds
+
+class ParallelWorld:
+    def __init__(self, name):
+        self.name = name
+        self.entities = []
+
+    def add_entity(self, entity):
+        self.entities.append(entity)
+
+    def remove_entity(self, entity):
+        if entity in self.entities:
+            self.entities.remove(entity)
+
+    def update(self):
+        # Logic for updating entities in this parallel world
+        for entity in self.entities:
+            entity.update()
+
+    def render(self):
+        # Render the entities in this parallel world
+        for entity in self.entities:
+            entity.render()
+
+class Entity:
+    def __init__(self, name):
+        self.name = name
+
+    def update(self):
+        # Logic for updating the entity
+        pass
+
+    def render(self):
+        # Render the entity
+        pass
