@@ -1,0 +1,52 @@
+// Файл: RayTracingSupport.java
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class RayTracingSupport {
+    private ExecutorService executorService;
+    
+    public RayTracingSupport() {
+        // Создаем пул потоков для параллельной трассировки лучей.
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        executorService = Executors.newFixedThreadPool(availableProcessors);
+    }
+    
+    public Future<Image> traceRaysAsync(Scene scene, Camera camera, int width, int height) {
+        // Асинхронно трассируем лучи и возвращаем Future с изображением.
+        return executorService.submit(() -> traceRays(scene, camera, width, height));
+    }
+    
+    public Image traceRays(Scene scene, Camera camera, int width, int height) {
+        // Основной метод для трассировки лучей.
+        Image image = new Image(width, height);
+        
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                // Создаем луч и трассируем его через сцену.
+                Ray ray = camera.generateRay(x, y, width, height);
+                Color pixelColor = traceRay(ray, scene);
+                
+                // Устанавливаем цвет пикселя на изображении.
+                image.setPixel(x, y, pixelColor);
+            }
+        }
+        
+        return image;
+    }
+    
+    private Color traceRay(Ray ray, Scene scene) {
+        // Здесь происходит трассировка луча через сцену и вычисление цвета.
+        // Реализация трассировки лучей может быть очень сложной и включать
+        // в себя отражение, преломление, тени, и другие эффекты.
+        // Возвращаем цвет для данного луча.
+        return Color.BLACK; // Заглушка, замените этот код реальной реализацией.
+    }
+    
+    public void shutdown() {
+        // Завершаем пул потоков при завершении работы.
+        executorService.shutdown();
+    }
+}
