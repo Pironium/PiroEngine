@@ -1,0 +1,59 @@
+class ParticleEmitter {
+  constructor(position, particleCount) {
+    this.position = position;
+    this.particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      this.particles.push(new Particle());
+    }
+  }
+
+  update() {
+    for (let particle of this.particles) {
+      particle.update();
+    }
+  }
+
+  render() {
+    for (let particle of this.particles) {
+      particle.render();
+    }
+  }
+}
+
+class Particle {
+  constructor() {
+    this.position = createRandomPosition(); // Функция createRandomPosition() генерирует случайную позицию частицы
+    this.velocity = createRandomVelocity(); // Функция createRandomVelocity() генерирует случайную скорость частицы
+    this.size = random(5, 20); // Размер частицы в случайном диапазоне
+    this.color = randomColor(); // Случайный цвет для частицы
+  }
+
+  update() {
+    // Обновление позиции частицы на основе скорости
+    this.position.add(this.velocity);
+    // Дополнительные действия, такие как затухание или взаимодействие с окружающим миром
+  }
+
+  render() {
+    // Отрисовка частицы на экране
+    fill(this.color);
+    ellipse(this.position.x, this.position.y, this.size, this.size);
+  }
+}
+
+// Вспомогательные функции
+function createRandomPosition() {
+  // Генерация случайной позиции в пределах экрана
+  return createVector(random(width), random(height));
+}
+
+function createRandomVelocity() {
+  // Генерация случайной скорости в пределах определенного диапазона
+  return createVector(random(-1, 1), random(-1, 1)).normalize().mult(random(1, 5));
+}
+
+function randomColor() {
+  // Генерация случайного цвета в формате RGB
+  return color(random(255), random(255), random(255));
+}
