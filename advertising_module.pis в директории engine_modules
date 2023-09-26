@@ -1,0 +1,24 @@
+# engine_modules/advertising_module.pis
+
+# Define the AdvertisingModule class
+class AdvertisingModule:
+    def __init__(self):
+        self.ad_banners = []
+
+    def load_banner(self, banner_url, position, size):
+        # Load a new ad banner into the game world
+        banner = create_3d_object(banner_url, position, size)
+        self.ad_banners.append(banner)
+
+    def remove_banner(self, banner):
+        # Remove an ad banner from the game world
+        if banner in self.ad_banners:
+            self.ad_banners.remove(banner)
+            destroy_3d_object(banner)
+
+# Create an instance of the AdvertisingModule
+ad_module = AdvertisingModule()
+
+# Example usage:
+# ad_module.load_banner("https://example.com/ad_banner.png", (0, 0, 0), (2, 1, 0.1))
+# ad_module.remove_banner(banner_to_remove)
