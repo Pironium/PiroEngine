@@ -1,0 +1,46 @@
+// Директория, в которой будет файл: engine/rendering/effects/
+// Название файла: dynamic_surface_shader.cpp
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+class DynamicSurfaceShader {
+public:
+    DynamicSurfaceShader() {
+        std::cout << "Initializing DynamicSurfaceShader..." << std::endl;
+    }
+
+    // Метод для применения динамического шейдера к поверхности объекта
+    void ApplyToSurface(std::string surfaceName) {
+        std::cout << "Applying DynamicSurfaceShader to surface: " << surfaceName << std::endl;
+        // Здесь будет сложный код для применения эффекта к поверхности
+    }
+
+    // Другие методы и функции для настройки и управления эффектом
+    void SetParameter(std::string paramName, float value) {
+        std::cout << "Setting parameter '" << paramName << "' to " << value << std::endl;
+        // Здесь будет сложный код для установки параметров эффекта
+    }
+
+    // Другие методы и функции для управления эффектом
+
+    ~DynamicSurfaceShader() {
+        std::cout << "Destroying DynamicSurfaceShader..." << std::endl;
+    }
+};
+
+int main() {
+    // Создаем экземпляр DynamicSurfaceShader
+    DynamicSurfaceShader shader;
+
+    // Применяем шейдер к поверхности объекта
+    shader.ApplyToSurface("MyObject");
+
+    // Настройка параметров эффекта
+    shader.SetParameter("Intensity", 0.8f);
+
+    // Здесь можно добавить еще сложных операций
+
+    return 0;
+}
