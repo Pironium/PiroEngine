@@ -1,0 +1,99 @@
+# PiroEngine - 3D Game Engine for PiroScript
+
+class PiroEngine:
+    def __init__(self):
+        self.scene = Scene()
+        self.renderer = Renderer()
+    
+    def load_model(self, model_path):
+        # Load 3D model from file
+        pass
+
+    def create_entity(self, model):
+        # Create a new entity with a 3D model
+        pass
+
+    def add_light(self, light):
+        # Add a light source to the scene
+        pass
+
+    def set_camera(self, camera):
+        # Set the active camera for rendering
+        pass
+
+    def update(self, delta_time):
+        # Update the game logic and animations
+        pass
+
+    def render(self):
+        # Render the 3D scene
+        pass
+
+class Scene:
+    def __init__(self):
+        self.entities = []
+        self.lights = []
+
+    def add_entity(self, entity):
+        # Add an entity to the scene
+        pass
+
+    def add_light(self, light):
+        # Add a light source to the scene
+        pass
+
+class Entity:
+    def __init__(self, model):
+        self.model = model
+        self.position = Vector3(0, 0, 0)
+        self.rotation = Vector3(0, 0, 0)
+
+class Model:
+    def __init__(self, model_path):
+        self.vertices = []
+        self.faces = []
+        self.texture = None
+
+class Light:
+    def __init__(self, light_type):
+        self.type = light_type
+        self.color = Color(255, 255, 255)
+        self.intensity = 1.0
+
+class Camera:
+    def __init__(self):
+        self.position = Vector3(0, 0, 0)
+        self.target = Vector3(0, 0, -1)
+        self.up = Vector3(0, 1, 0)
+
+class Vector3:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+class Color:
+    def __init__(self, r, g, b):
+        self.r = r
+        self.g = g
+        self.b = b
+
+class Renderer:
+    def __init__(self):
+        pass
+
+    def set_resolution(self, width, height):
+        # Set the rendering resolution
+        pass
+
+    def clear_screen(self, color):
+        # Clear the screen with the specified color
+        pass
+
+    def draw_model(self, model, position, rotation):
+        # Draw a 3D model at the specified position and rotation
+        pass
+
+    def render_lights(self, lights):
+        # Render light sources
+        pass
