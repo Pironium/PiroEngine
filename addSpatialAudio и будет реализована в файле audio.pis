@@ -1,0 +1,41 @@
+# Файл: audio.pis
+
+# Функция для добавления объемного звука к объекту сцены
+def addSpatialAudio(objectName, soundFile, maxDistance, minDistance):
+    if objectExists(objectName):
+        if isAudioFileValid(soundFile):
+            # Реализация объемного звука для объекта
+            setAudioProperties(objectName, soundFile, maxDistance, minDistance)
+            playAudio(objectName)
+        else:
+            print("Ошибка: Недопустимый формат аудиофайла.")
+    else:
+        print("Ошибка: Объект не найден.")
+
+# Вспомогательная функция для проверки допустимости формата аудиофайла
+def isAudioFileValid(soundFile):
+    supportedFormats = [".wav", ".mp3", ".ogg"]
+    fileExtension = getFileExtension(soundFile)
+    return fileExtension in supportedFormats
+
+# Вспомогательная функция для получения расширения файла
+def getFileExtension(filename):
+    return filename[filename.rfind("."):]
+
+# Вспомогательная функция для проверки существования объекта в сцене
+def objectExists(objectName):
+    # Здесь можно добавить проверку существования объекта в сцене
+    return True
+
+# Вспомогательная функция для настройки параметров объемного звука
+def setAudioProperties(objectName, soundFile, maxDistance, minDistance):
+    # Здесь можно настроить параметры объемного звука для объекта
+    pass
+
+# Вспомогательная функция для воспроизведения аудио
+def playAudio(objectName):
+    # Здесь можно добавить код для воспроизведения аудио
+    pass
+
+# Пример использования:
+addSpatialAudio("PlayerCharacter", "footsteps.wav", 10.0, 1.0)
