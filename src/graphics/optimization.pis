@@ -1,0 +1,27 @@
+# PiroEngine Graphics Optimization Module
+
+function optimizeForNvidia(videoSettings: VideoSettings) -> VideoSettings {
+    # Check if the graphics card is Nvidia
+    if videoSettings.graphicsCard == "Nvidia" {
+        # Apply Nvidia-specific optimizations
+        videoSettings.antialiasingLevel = 4
+        videoSettings.textureQuality = "High"
+        videoSettings.shaderQuality = "Ultra"
+        videoSettings.shadowQuality = "High"
+    }
+    
+    return videoSettings
+}
+
+function optimizeForAmd(videoSettings: VideoSettings) -> VideoSettings {
+    # Check if the graphics card is AMD
+    if videoSettings.graphicsCard == "AMD" {
+        # Apply AMD-specific optimizations
+        videoSettings.antialiasingLevel = 2
+        videoSettings.textureQuality = "Medium"
+        videoSettings.shaderQuality = "High"
+        videoSettings.shadowQuality = "Medium"
+    }
+    
+    return videoSettings
+}
