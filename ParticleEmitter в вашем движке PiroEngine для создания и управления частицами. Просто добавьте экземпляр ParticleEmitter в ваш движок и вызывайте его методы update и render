@@ -1,0 +1,73 @@
+// ParticleEmitter.hpp
+#pragma once
+
+#include <vector>
+#include <iostream>
+
+class Particle {
+public:
+    float x, y, z;  // Позиция частицы
+    float vx, vy, vz;  // Скорость частицы
+    float lifetime;  // Время жизни частицы
+
+    Particle(float posX, float posY, float posZ, float velX, float velY, float velZ, float life)
+        : x(posX), y(posY), z(posZ), vx(velX), vy(velY), vz(velZ), lifetime(life) {}
+
+    void update(float deltaTime) {
+        // Обновление позиции частицы на основе скорости
+        x += vx * deltaTime;
+        y += vy * deltaTime;
+        z += vz * deltaTime;
+        
+        // Уменьшение времени жизни частицы
+        lifetime -= deltaTime;
+    }
+
+    bool isAlive() const {
+        return lifetime > 0.0f;
+    }
+};
+
+class ParticleEmitter {
+private:
+    std::vector<Particle> particles;
+    float emissionRate;  // Скорость выпуска частиц
+    float timeSinceLastEmission;
+
+public:
+    ParticleEmitter(float rate) : emissionRate(rate), timeSinceLastEmission(0.0f) {}
+
+    void update(float deltaTime) {
+        // Обновление всех частиц
+        for (auto& particle : particles) {
+            particle.update(deltaTime);
+        }
+
+        // Удаление "мертвых" частиц
+        particles.erase(std::remove_if(particles.begin(), particles.end(), [](const Particle& p) {
+            return !p.isAlive();
+        }), particles.end());
+
+        // Обновление времени с момента последнего выпуска
+        timeSinceLastEmission += deltaTime;
+
+        // Проверка, нужно ли выпустить новую частицу
+        if (timeSinceLastEmission >= 1.0f / emissionRate) {
+            emitParticle();
+            timeSinceLastEmission = 0.0f;
+        }
+    }
+
+    void emitParticle() {
+        // Создание новой частицы и добавление ее в список
+        particles.emplace_back(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 2.0f);  // Пример начальных параметров
+    }
+
+    void render() const {
+        // Рендеринг всех частиц (ваш код для рендеринга частиц)
+        for (const auto& particle : particles) {
+            // Реализация рендеринга частиц здесь
+            std::cout << "Rendering particle at (" << particle.x << ", " << particle.y << ", " << particle.z << ")" << std::endl;
+        }
+    }
+};
