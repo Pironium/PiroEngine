@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+// Структура для представления характеристик видеокарты
+struct GraphicsCard {
+    std::string brand;
+    int cudaCores;
+    int computeUnits;
+    int memoryGB;
+};
+
+// Функция для оптимизации рендеринга на видеокартах NVIDIA
+void OptimizeForNvidia(GraphicsCard card) {
+    if (card.brand == "NVIDIA") {
+        // Ваш сложный код оптимизации для NVIDIA
+        std::cout << "Optimizing for NVIDIA..." << std::endl;
+    }
+}
+
+// Функция для оптимизации рендеринга на видеокартах AMD
+void OptimizeForAMD(GraphicsCard card) {
+    if (card.brand == "AMD") {
+        // Ваш сложный код оптимизации для AMD
+        std::cout << "Optimizing for AMD..." << std::endl;
+    }
+}
+
+int main() {
+    // Пример списка видеокарт для оптимизации
+    std::vector<GraphicsCard> graphicsCards = {
+        {"NVIDIA", 3840, 60, 16},
+        {"AMD", 4096, 64, 12},
+        {"NVIDIA", 5120, 80, 32},
+        {"AMD", 3584, 56, 8}
+    };
+
+    // Оптимизация для каждой видеокарты в списке
+    for (const auto& card : graphicsCards) {
+        OptimizeForNvidia(card);
+        OptimizeForAMD(card);
+    }
+
+    return 0;
+}
