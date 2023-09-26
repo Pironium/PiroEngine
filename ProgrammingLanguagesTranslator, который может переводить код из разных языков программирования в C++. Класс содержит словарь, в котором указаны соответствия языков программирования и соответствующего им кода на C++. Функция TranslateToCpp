@@ -1,0 +1,41 @@
+// Директория, в которой будет файл: translation_utils/programming_languages_translator.cpp
+#include <iostream>
+#include <string>
+#include <unordered_map>
+
+// Класс, представляющий переводчик языков программирования в C++
+class ProgrammingLanguagesTranslator {
+public:
+    // Конструктор класса
+    ProgrammingLanguagesTranslator() {
+        // Инициализируем словарь с парами "язык программирования" -> "соответствующий код на C++"
+        translationMap["Python"] = "cout << \"Hello, World!\";";
+        translationMap["Java"] = "System.out.println(\"Hello, World!\");";
+        translationMap["JavaScript"] = "console.log(\"Hello, World!\");";
+        // Добавьте сюда еще переводы для других языков программирования
+    }
+
+    // Функция для перевода кода из заданного языка в C++
+    std::string TranslateToCpp(const std::string& sourceCode, const std::string& sourceLanguage) {
+        // Проверяем, есть ли перевод для заданного языка
+        if (translationMap.find(sourceLanguage) != translationMap.end()) {
+            // Если есть, добавляем соответствующий перевод и возвращаем результат
+            return translationMap[sourceLanguage] + "\n" + sourceCode;
+        } else {
+            // Если нет, возвращаем исходный код без изменений
+            return sourceCode;
+        }
+    }
+
+private:
+    std::unordered_map<std::string, std::string> translationMap;
+};
+
+// Пример использования
+int main() {
+    ProgrammingLanguagesTranslator translator;
+    std::string pythonCode = "print('Hello, World!')";
+    std::string cppCode = translator.TranslateToCpp(pythonCode, "Python");
+    std::cout << "Translated C++ Code:\n" << cppCode << std::endl;
+    return 0;
+}
