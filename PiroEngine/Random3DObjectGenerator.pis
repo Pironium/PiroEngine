@@ -1,0 +1,23 @@
+// PiroScript code for PiroEngine
+
+import PiroEngine
+
+func generateRandom3DObject() -> GameObject {
+    let object = GameObject()
+    
+    // Generate a random 3D model
+    let randomModel = ModelLibrary.getRandomModel()
+    object.attachModel(randomModel)
+    
+    // Set a random position in 3D space
+    object.position = Vector3D.randomPosition()
+    
+    // Apply random rotation
+    object.rotation = Quaternion.randomRotation()
+    
+    // Add some physics properties
+    let rigidBody = object.addComponent(RigidBody())
+    rigidBody.mass = Float.random(in: 1.0...10.0)
+    
+    return object
+}
