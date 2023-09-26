@@ -1,0 +1,32 @@
+# PiroScript (.pis) код для оптимизации под видеокарты NVIDIA и AMD
+
+# Импортируем библиотеки для работы с графикой
+import nvidia_graphics_library as ngl
+import amd_graphics_library as agl
+
+# Функция оптимизации для NVIDIA
+def optimize_for_nvidia(scene):
+    nvidia_settings = ngl.create_settings()
+    
+    # Применяем оптимизацию для NVIDIA
+    ngl.optimize(scene, nvidia_settings)
+
+# Функция оптимизации для AMD
+def optimize_for_amd(scene):
+    amd_settings = agl.create_settings()
+    
+    # Применяем оптимизацию для AMD
+    agl.optimize(scene, amd_settings)
+
+# Основная функция оптимизации
+def optimize_graphics(scene):
+    # Оптимизация для NVIDIA
+    optimize_for_nvidia(scene)
+    
+    # Оптимизация для AMD
+    optimize_for_amd(scene)
+
+# Пример использования функции оптимизации
+if __name__ == "__main__":
+    scene = load_scene("example_scene.p3d")  # Загрузка сцены
+    optimize_graphics(scene)  # Применение оптимизации
