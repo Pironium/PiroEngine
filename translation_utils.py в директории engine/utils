@@ -1,0 +1,29 @@
+# engine/utils/translation_utils.py
+
+class TranslationManager:
+    def __init__(self, default_language='en'):
+        self.translations = {}
+        self.default_language = default_language
+
+    def add_translation(self, language, translation_dict):
+        self.translations[language] = translation_dict
+
+    def translate(self, text, language):
+        if language in self.translations:
+            if text in self.translations[language]:
+                return self.translations[language][text]
+        # Если перевода нет, вернем исходный текст
+        return text
+
+# Пример использования:
+if __name__ == '__main__':
+    translation_manager = TranslationManager(default_language='en')
+    
+    # Добавим переводы для разных языков
+    translation_manager.add_translation('fr', {'Hello': 'Bonjour', 'Goodbye': 'Au revoir'})
+    translation_manager.add_translation('es', {'Hello': 'Hola', 'Goodbye': 'Adiós'})
+    
+    # Переводим текст на разные языки
+    print(translation_manager.translate('Hello', 'fr'))  # Вывод: 'Bonjour'
+    print(translation_manager.translate('Goodbye', 'es'))  # Вывод: 'Adiós'
+    print(translation_manager.translate('Thank you', 'de'))  # Вывод: 'Thank you' (исходный текст)
