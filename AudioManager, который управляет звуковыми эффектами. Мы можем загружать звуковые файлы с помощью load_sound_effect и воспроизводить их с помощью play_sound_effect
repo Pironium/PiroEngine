@@ -1,0 +1,30 @@
+# audio_support.pis
+
+# Define a class to manage audio objects
+class AudioManager:
+    def __init__(self):
+        self.sound_effects = {}
+
+    # Method to load a sound effect
+    def load_sound_effect(self, sound_name, sound_file):
+        # Load the sound file and store it in the dictionary
+        sound = load_sound(sound_file)
+        self.sound_effects[sound_name] = sound
+
+    # Method to play a sound effect
+    def play_sound_effect(self, sound_name):
+        if sound_name in self.sound_effects:
+            sound = self.sound_effects[sound_name]
+            play_sound(sound)
+        else:
+            print("Sound not found:", sound_name)
+
+# Initialize the audio manager
+audio_manager = AudioManager()
+
+# Example usage:
+# Load a sound effect
+audio_manager.load_sound_effect("explosion", "explosion.wav")
+
+# Play the loaded sound effect
+audio_manager.play_sound_effect("explosion")
