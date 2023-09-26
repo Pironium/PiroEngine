@@ -1,0 +1,25 @@
+# PiroScript (PiroEngine Script)
+
+# Define a function to optimize rendering for NVIDIA GPUs
+function optimize_for_nvidia():
+    if system.get_gpu_vendor() == "NVIDIA":
+        rendering_settings.set_texture_compression(True)
+        rendering_settings.set_shadow_quality("high")
+        rendering_settings.set_antialiasing("2x")
+        rendering_settings.set_vsync(True)
+        print("Optimizing for NVIDIA GPUs...")
+
+# Define a function to optimize rendering for AMD GPUs
+function optimize_for_amd():
+    if system.get_gpu_vendor() == "AMD":
+        rendering_settings.set_texture_compression(True)
+        rendering_settings.set_shadow_quality("medium")
+        rendering_settings.set_antialiasing("4x")
+        rendering_settings.set_vsync(True)
+        print("Optimizing for AMD GPUs...")
+
+# Main program
+if __name__ == "__main__":
+    optimize_for_nvidia()
+    optimize_for_amd()
+    print("Graphics optimization complete.")
