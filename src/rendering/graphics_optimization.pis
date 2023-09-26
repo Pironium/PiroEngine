@@ -1,0 +1,40 @@
+# PiroScript code for Graphics Optimization
+import PiroEngine
+
+# Define a function to optimize rendering for Nvidia GPUs
+def optimize_for_nvidia():
+    # Check if the current GPU is Nvidia
+    if PiroEngine.get_gpu_vendor() == "Nvidia":
+        # Enable Nvidia-specific optimizations
+        PiroEngine.enable_gpu_feature("NvidiaOptimization")
+        PiroEngine.set_gpu_render_mode("HighPerformance")
+        PiroEngine.set_gpu_texture_compression("BC7")
+        PiroEngine.set_gpu_antialiasing("FXAA")
+
+# Define a function to optimize rendering for AMD GPUs
+def optimize_for_amd():
+    # Check if the current GPU is AMD
+    if PiroEngine.get_gpu_vendor() == "AMD":
+        # Enable AMD-specific optimizations
+        PiroEngine.enable_gpu_feature("AMDOptimization")
+        PiroEngine.set_gpu_render_mode("HighQuality")
+        PiroEngine.set_gpu_texture_compression("BC6H")
+        PiroEngine.set_gpu_antialiasing("TAA")
+
+# Main function to apply graphics optimization based on GPU vendor
+def apply_graphics_optimization():
+    gpu_vendor = PiroEngine.get_gpu_vendor()
+    
+    if gpu_vendor == "Nvidia":
+        optimize_for_nvidia()
+    elif gpu_vendor == "AMD":
+        optimize_for_amd()
+    else:
+        # Default optimization for other GPUs
+        PiroEngine.set_gpu_render_mode("Balanced")
+        PiroEngine.set_gpu_texture_compression("Auto")
+        PiroEngine.set_gpu_antialiasing("SMAA")
+
+# Entry point of the script
+if __name__ == "__main__":
+    apply_graphics_optimization()
