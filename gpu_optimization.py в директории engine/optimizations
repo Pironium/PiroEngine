@@ -1,0 +1,25 @@
+# engine/optimizations/gpu_optimization.py
+
+# Import necessary libraries
+import numpy as np
+import piroscript as ps
+
+# Define a function for GPU optimization
+def optimize_for_gpu(engine, gpu_type):
+    if gpu_type == 'NVIDIA':
+        engine.use_cuda = True
+        engine.gpu_memory_allocation = 0.8  # Allocate 80% of GPU memory
+    elif gpu_type == 'AMD':
+        engine.use_opencl = True
+        engine.opencl_platform = 1  # Specify AMD OpenCL platform
+    else:
+        raise ValueError("Unsupported GPU type")
+
+# Initialize PiroEngine
+engine = ps.PiroEngine()
+
+# Check the GPU type
+gpu_type = ps.detect_gpu()  # Function to detect GPU type
+
+# Call the optimization function
+optimize_for_gpu(engine, gpu_type)
