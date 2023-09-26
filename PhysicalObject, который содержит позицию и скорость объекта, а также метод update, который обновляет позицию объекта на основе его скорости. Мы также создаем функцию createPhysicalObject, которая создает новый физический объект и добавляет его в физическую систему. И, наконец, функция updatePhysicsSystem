@@ -1,0 +1,37 @@
+// Создаем новый файл с расширением .pis для физической системы
+physics_system.pis
+
+// Определяем класс для физического объекта
+class PhysicalObject {
+    // Переменные для хранения позиции и скорости
+    var position: Vector3
+    var velocity: Vector3
+    
+    // Конструктор для инициализации объекта
+    init(initialPosition: Vector3) {
+        position = initialPosition
+        velocity = Vector3(0, 0, 0)
+    }
+    
+    // Метод для обновления положения объекта
+    func update() {
+        // Применяем скорость к позиции
+        position += velocity
+    }
+}
+
+// Определяем функцию для создания физического объекта
+func createPhysicalObject(initialPosition: Vector3) -> PhysicalObject {
+    let obj = PhysicalObject(initialPosition: initialPosition)
+    // Добавляем новый объект в физическую систему
+    physicsSystem.addObject(obj)
+    return obj
+}
+
+// Определяем функцию для обновления физической системы
+func updatePhysicsSystem() {
+    // Обновляем все физические объекты в системе
+    for obj in physicsSystem.objects {
+        obj.update()
+    }
+}
