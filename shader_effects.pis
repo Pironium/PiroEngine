@@ -1,0 +1,34 @@
+# PiroEngine Shader Effects Module
+# This module provides advanced shader effects for the PiroEngine.
+
+import pirographics
+
+class ShaderEffects:
+    def __init__(self):
+        self.active_effects = []
+
+    def add_effect(self, effect_name):
+        """Add a shader effect to the active effects list."""
+        if effect_name not in self.active_effects:
+            self.active_effects.append(effect_name)
+
+    def remove_effect(self, effect_name):
+        """Remove a shader effect from the active effects list."""
+        if effect_name in self.active_effects:
+            self.active_effects.remove(effect_name)
+
+    def apply_effects(self):
+        """Apply all active shader effects to the rendering pipeline."""
+        for effect in self.active_effects:
+            pirographics.apply_shader_effect(effect)
+
+    def clear_effects(self):
+        """Clear all active shader effects."""
+        self.active_effects.clear()
+
+# Example usage:
+if __name__ == "__main__":
+    shader_effects = ShaderEffects()
+    shader_effects.add_effect("Bloom")
+    shader_effects.add_effect("DepthOfField")
+    shader_effects.apply_effects()
