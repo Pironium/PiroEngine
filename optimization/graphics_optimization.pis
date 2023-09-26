@@ -1,0 +1,45 @@
+# PiroEngine Graphics Optimization Module for Nvidia and AMD GPUs
+
+# Import necessary libraries
+import piroengine
+import nvidia_optimization_library as nv_opt
+import amd_optimization_library as amd_opt
+
+# Initialize the graphics optimization module
+def initialize_graphics_optimization():
+    piroengine.log("Initializing graphics optimization module...")
+
+    # Check if Nvidia GPU is available
+    if nv_opt.detect_nvidia_gpu():
+        piroengine.log("Nvidia GPU detected.")
+        nv_opt.initialize_nvidia_optimization()
+    else:
+        piroengine.log("No Nvidia GPU detected. Skipping Nvidia optimization.")
+
+    # Check if AMD GPU is available
+    if amd_opt.detect_amd_gpu():
+        piroengine.log("AMD GPU detected.")
+        amd_opt.initialize_amd_optimization()
+    else:
+        piroengine.log("No AMD GPU detected. Skipping AMD optimization.")
+
+# Apply graphics optimization settings
+def apply_graphics_optimization_settings():
+    piroengine.log("Applying graphics optimization settings...")
+
+    # Apply Nvidia GPU settings
+    if nv_opt.is_nvidia_optimization_initialized():
+        nv_opt.apply_nvidia_graphics_settings()
+
+    # Apply AMD GPU settings
+    if amd_opt.is_amd_optimization_initialized():
+        amd_opt.apply_amd_graphics_settings()
+
+# Main function to optimize graphics for both Nvidia and AMD GPUs
+def optimize_graphics_for_gaming():
+    initialize_graphics_optimization()
+    apply_graphics_optimization_settings()
+    piroengine.log("Graphics optimization complete.")
+
+# Run the graphics optimization process
+optimize_graphics_for_gaming()
