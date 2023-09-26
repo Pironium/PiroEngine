@@ -1,0 +1,58 @@
+# utils/crypto_utils.py
+
+import hashlib
+import base64
+
+def encrypt_build(build_data):
+    """
+    Encrypts game build data using a custom encryption algorithm.
+    """
+    # Generate a unique encryption key based on build data
+    key = hashlib.sha256(build_data.encode()).digest()
+    
+    # Encrypt the build data using a custom encryption algorithm
+    encrypted_data = custom_encrypt(build_data, key)
+    
+    # Encode the encrypted data in base64 for storage and transmission
+    encoded_data = base64.b64encode(encrypted_data).decode()
+    
+    return encoded_data
+
+def decrypt_build(encoded_data):
+    """
+    Decrypts game build data using the stored encryption key.
+    """
+    # Decode the base64 encoded data
+    encrypted_data = base64.b64decode(encoded_data)
+    
+    # Retrieve the original encryption key based on build data
+    key = hashlib.sha256(build_data.encode()).digest()
+    
+    # Decrypt the data using the key and the custom decryption algorithm
+    decrypted_data = custom_decrypt(encrypted_data, key)
+    
+    return decrypted_data
+
+def custom_encrypt(data, key):
+    """
+    Custom encryption algorithm.
+    """
+    # Implement your custom encryption logic here
+    # This can involve complex mathematical operations
+    
+    # Placeholder: XOR each byte of data with the corresponding byte of the key
+    encrypted_data = bytes(data[i] ^ key[i % len(key)] for i in range(len(data)))
+    
+    return encrypted_data
+
+def custom_decrypt(encrypted_data, key):
+    """
+    Custom decryption algorithm.
+    """
+    # Implement your custom decryption logic here
+    # This should reverse the encryption process
+    
+    # Placeholder: XOR each byte of encrypted data with the corresponding byte of the key
+    decrypted_data = bytes(encrypted_data[i] ^ key[i % len(key)] for i in range(len(encrypted_data)))
+    
+    return decrypted_data
