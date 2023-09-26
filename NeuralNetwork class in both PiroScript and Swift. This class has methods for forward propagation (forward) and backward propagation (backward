@@ -1,0 +1,60 @@
+# PiroScript Implementation
+
+# Directory: PiroEngine/NeuralNetwork.pis
+
+class NeuralNetwork:
+    def __init__(self, input_size, output_size):
+        # Initialize neural network parameters
+        self.input_size = input_size
+        self.output_size = output_size
+        self.weights = initialize_weights(input_size, output_size)
+        self.biases = initialize_biases(output_size)
+        
+    def forward(self, input_data):
+        # Perform forward pass
+        output = dot_product(input_data, self.weights) + self.biases
+        return output
+    
+    def backward(self, input_data, output_grad, learning_rate):
+        # Perform backward pass and update weights
+        grad_weights = dot_product(input_data.T, output_grad)
+        grad_biases = sum(output_grad)
+        
+        # Update weights and biases
+        self.weights -= learning_rate * grad_weights
+        self.biases -= learning_rate * grad_biases
+
+# Swift Implementation
+
+// Directory: PiroEngine/NeuralNetwork.swift
+
+class NeuralNetwork {
+    var inputSize: Int
+    var outputSize: Int
+    var weights: Matrix
+    var biases: Vector
+    
+    init(inputSize: Int, outputSize: Int) {
+        // Initialize neural network parameters
+        self.inputSize = inputSize
+        self.outputSize = outputSize
+        self.weights = initializeWeights(inputSize: inputSize, outputSize: outputSize)
+        self.biases = initializeBiases(outputSize: outputSize)
+    }
+    
+    func forward(inputData: Matrix) -> Vector {
+        // Perform forward pass
+        let output = dotProduct(inputData, self.weights) + self.biases
+        return output
+    }
+    
+    func backward(inputData: Matrix, outputGrad: Vector, learningRate: Double) {
+        // Perform backward pass and update weights
+        let gradWeights = dotProduct(inputData.transposed(), outputGrad)
+        let gradBiases = sum(outputGrad)
+        
+        // Update weights and biases
+        self.weights -= learningRate * gradWeights
+        self.biases -= learningRate * gradBiases
+    }
+}
