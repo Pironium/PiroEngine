@@ -1,0 +1,27 @@
+# Файл ShaderGenerator.pis
+
+# Уникальная функция для антогенерации шейдеров
+function generateShader() {
+    # Генерируем случайный шейдер
+    let vertexShader = "void main() {"
+    vertexShader += "    // Ваш код генерации вершинного шейдера здесь"
+    vertexShader += "}"
+
+    let fragmentShader = "void main() {"
+    fragmentShader += "    // Ваш код генерации фрагментного шейдера здесь"
+    fragmentShader += "}"
+
+    # Возвращаем сгенерированные шейдеры
+    return { vertexShader, fragmentShader }
+}
+
+# Другие функции и фичи вашего движка здесь
+
+# ...
+
+# Главная функция для тестирования
+function main() {
+    let generatedShaders = generateShader()
+    print("Сгенерированный вершинный шейдер:", generatedShaders.vertexShader)
+    print("Сгенерированный фрагментный шейдер:", generatedShaders.fragmentShader)
+}
