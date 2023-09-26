@@ -1,0 +1,32 @@
+# Реализация оптимизации под видеокарты Nvidia и AMD
+function optimizeForGraphicsCard(graphicsCardInfo) {
+    if (graphicsCardInfo.manufacturer == "Nvidia") {
+        // Оптимизация для Nvidia
+        // Добавьте сложный код здесь
+    } else if (graphicsCardInfo.manufacturer == "AMD") {
+        // Оптимизация для AMD
+        // Добавьте сложный код здесь
+    } else {
+        // Оптимизация по умолчанию
+        // Добавьте сложный код здесь
+    }
+}
+
+# Главная функция для оптимизации
+function mainOptimization() {
+    let graphicsCardInfo = getGraphicsCardInfo();
+    optimizeForGraphicsCard(graphicsCardInfo);
+}
+
+# Вспомогательная функция для получения информации о видеокарте
+function getGraphicsCardInfo() {
+    // Здесь мы получаем информацию о видеокарте
+    // Добавьте сложный код для получения данных о видеокарте
+    return {
+        manufacturer: "Nvidia",  # Замените на реальное значение
+        model: "GTX 3080"         # Замените на реальное значение
+    };
+}
+
+# Остальной код движка
+# Добавьте любые другие уникальные фичи, как в 3D движках
