@@ -1,0 +1,43 @@
+# physics.py - PiroEngine Physics Module
+
+class PhysicsEngine:
+    def __init__(self):
+        self.gravity = 9.8  # Standard gravity on Earth in m/s^2
+
+    def apply_gravity(self, object, time):
+        """
+        Apply gravitational force to an object.
+        
+        :param object: The object to apply gravity to.
+        :type object: GameObject
+        :param time: The time step for the physics simulation.
+        :type time: float
+        """
+        object.velocity.y -= self.gravity * time
+
+class GameObject:
+    def __init__(self, name):
+        self.name = name
+        self.position = Vector3(0, 0, 0)
+        self.velocity = Vector3(0, 0, 0)
+
+class Vector3:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+# Example usage:
+if __name__ == "__main__":
+    engine = PhysicsEngine()
+    obj = GameObject("Player")
+    time_step = 0.01  # Time step for the simulation
+    simulation_time = 10  # Total simulation time in seconds
+    
+    for t in range(int(simulation_time / time_step)):
+        engine.apply_gravity(obj, time_step)
+        obj.position.x += obj.velocity.x * time_step
+        obj.position.y += obj.velocity.y * time_step
+        obj.position.z += obj.velocity.z * time_step
+        
+        print(f"Time: {t * time_step} seconds - Position: ({obj.position.x}, {obj.position.y}, {obj.position.z})")
