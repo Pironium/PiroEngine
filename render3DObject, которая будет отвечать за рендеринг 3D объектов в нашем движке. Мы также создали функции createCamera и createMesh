@@ -1,0 +1,20 @@
+// Директория: engine/core/
+// Название файла: 3d_rendering.pis
+
+// Включаем нашу новую 3D рендеринг функцию
+func render3DObject(object: Mesh, camera: Camera) {
+    // Код для рендеринга 3D объекта
+    // ...
+}
+
+// Функция для создания 3D камеры
+func createCamera(position: Vector3, target: Vector3) -> Camera {
+    // Код для создания камеры
+    // ...
+}
+
+// Функция для создания 3D объекта
+func createMesh(geometry: Geometry, material: Material) -> Mesh {
+    // Код для создания 3D объекта
+    // ...
+}
