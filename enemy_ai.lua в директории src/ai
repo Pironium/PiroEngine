@@ -1,0 +1,42 @@
+-- src/ai/enemy_ai.lua
+
+-- Define the enemy AI module
+local enemyAI = {}
+
+-- Function to initialize the enemy AI
+function enemyAI:init()
+    -- Initialize AI parameters here
+    self.target = nil
+    self.state = "idle"
+    -- Add any other necessary initialization code
+end
+
+-- Function to set the target for the enemy
+function enemyAI:setTarget(target)
+    self.target = target
+end
+
+-- Function to update the enemy's AI logic
+function enemyAI:update(dt)
+    -- Implement advanced AI behavior here
+    if self.state == "idle" then
+        -- Perform idle behavior
+    elseif self.state == "chase" then
+        -- Implement chasing behavior
+    elseif self.state == "attack" then
+        -- Implement attack behavior
+    end
+
+    -- Add any other AI behaviors as needed
+
+    -- Update AI state and perform transitions
+    self:checkStateTransitions()
+end
+
+-- Function to check and perform state transitions
+function enemyAI:checkStateTransitions()
+    -- Implement state transition logic here based on game conditions
+end
+
+-- Export the enemyAI module
+return enemyAI
