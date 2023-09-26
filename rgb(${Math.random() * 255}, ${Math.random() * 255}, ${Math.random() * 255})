@@ -1,0 +1,50 @@
+// Директория: engine/effects/
+// Название файла: star_explosion_effects.js
+
+class StarExplosionEffect {
+  constructor() {
+    this.particleCount = 1000;
+    this.particles = [];
+
+    // Инициализация частиц звездного взрыва
+    for (let i = 0; i < this.particleCount; i++) {
+      const particle = {
+        x: Math.random() * 10 - 5,   // Случайное положение по X
+        y: Math.random() * 10 - 5,   // Случайное положение по Y
+        z: Math.random() * 10 - 5,   // Случайное положение по Z
+        velocity: Math.random() * 0.1, // Скорость движения
+        opacity: Math.random(),       // Прозрачность
+        color: `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})` // Случайный цвет
+      };
+      this.particles.push(particle);
+    }
+  }
+
+  // Метод для обновления состояния эффекта
+  update() {
+    for (const particle of this.particles) {
+      // Логика обновления положения и прозрачности частиц
+      particle.x += particle.velocity;
+      particle.y += particle.velocity;
+      particle.z += particle.velocity;
+      particle.opacity -= 0.005;
+    }
+  }
+
+  // Метод для отрисовки эффекта
+  draw() {
+    for (const particle of this.particles) {
+      // Логика отрисовки частиц
+      // Рисуем точку с цветом и прозрачностью
+      drawPoint(particle.x, particle.y, particle.z, particle.color, particle.opacity);
+    }
+  }
+}
+
+// Функция для отрисовки точки в трехмерном пространстве
+function drawPoint(x, y, z, color, opacity) {
+  // Реализация отрисовки точки
+}
+
+// Экспортируем класс для использования в движке
+module.exports = StarExplosionEffect;
