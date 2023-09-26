@@ -1,0 +1,62 @@
+# PiroScriptPlugin.pis
+
+# PiroScript Plugin class definition
+class PiroScriptPlugin:
+    def __init__(self, name):
+        self.name = name
+        self.enabled = False
+
+    def enable(self):
+        self.enabled = True
+        print(f'PiroScript Plugin "{self.name}" has been enabled.')
+
+    def disable(self):
+        self.enabled = False
+        print(f'PiroScript Plugin "{self.name}" has been disabled.')
+
+    def execute_script(self, script):
+        if self.enabled:
+            print(f'Executing PiroScript in Plugin "{self.name}":\n{script}')
+        else:
+            print(f'PiroScript Plugin "{self.name}" is not enabled. Cannot execute script.')
+
+# PiroScript Plugin Manager class definition
+class PiroScriptPluginManager:
+    def __init__(self):
+        self.plugins = []
+
+    def add_plugin(self, plugin):
+        self.plugins.append(plugin)
+
+    def enable_all_plugins(self):
+        for plugin in self.plugins:
+            plugin.enable()
+
+    def disable_all_plugins(self):
+        for plugin in self.plugins:
+            plugin.disable()
+
+    def execute_script_in_all_plugins(self, script):
+        for plugin in self.plugins:
+            plugin.execute_script(script)
+
+# Example usage
+if __name__ == "__main__":
+    # Create plugin manager
+    plugin_manager = PiroScriptPluginManager()
+
+    # Create and add plugins
+    plugin1 = PiroScriptPlugin("Plugin 1")
+    plugin2 = PiroScriptPlugin("Plugin 2")
+    plugin_manager.add_plugin(plugin1)
+    plugin_manager.add_plugin(plugin2)
+
+    # Enable all plugins
+    plugin_manager.enable_all_plugins()
+
+    # Execute a PiroScript in all enabled plugins
+    script_to_execute = "print('Hello from PiroScript!')"
+    plugin_manager.execute_script_in_all_plugins(script_to_execute)
+
+    # Disable all plugins
+    plugin_manager.disable_all_plugins()
