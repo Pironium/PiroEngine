@@ -1,0 +1,53 @@
+# PiroEngine Game Compiler for Windows
+
+function compileForWindows(gameName: string, sourceFiles: array, outputPath: string) {
+    // Компилируем игру для Windows
+    print("Compiling game '", gameName, "' for Windows...");
+
+    // Здесь добавьте логику компиляции под Windows, например, использование Visual C++.
+
+    // После компиляции, скопируем исполняемый файл в указанную директорию.
+    copyExecutableTo(outputPath);
+
+    print("Game '", gameName, "' compiled successfully for Windows.");
+}
+
+function copyExecutableTo(destinationPath: string) {
+    // Здесь реализуйте логику копирования исполняемого файла в указанную директорию.
+}
+
+# Добавим возможность компиляции игры для Android
+function compileForAndroid(gameName: string, sourceFiles: array, outputPath: string) {
+    // Компилируем игру для Android
+    print("Compiling game '", gameName, "' for Android...");
+
+    // Здесь добавьте логику компиляции под Android, например, использование Android NDK и Gradle.
+
+    // После компиляции, скопируем APK файл в указанную директорию.
+    copyAPKTo(outputPath);
+
+    print("Game '", gameName, "' compiled successfully for Android.");
+}
+
+function copyAPKTo(destinationPath: string) {
+    // Здесь реализуйте логику копирования APK файла в указанную директорию.
+}
+
+# Добавим поддержку компиляции для других платформ, таких как iPhone, macOS, Linux, PS4 и Xbox One
+# ...
+
+# Теперь создадим функцию, которая будет выбирать нужный компилятор в зависимости от целевой платформы.
+function compileGame(gameName: string, sourceFiles: array, outputPath: string, targetPlatform: string) {
+    if (targetPlatform == "Windows") {
+        compileForWindows(gameName, sourceFiles, outputPath);
+    } else if (targetPlatform == "Android") {
+        compileForAndroid(gameName, sourceFiles, outputPath);
+    } 
+    # Добавьте условия для других платформ
+    # ...
+    else {
+        print("Target platform '", targetPlatform, "' is not supported.");
+    }
+}
+
+# Теперь можем вызывать функцию compileGame() для компиляции игры для нужной платформы.
