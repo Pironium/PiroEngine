@@ -1,0 +1,52 @@
+# sound_support.py
+
+class SoundManager:
+    def __init__(self):
+        self.sounds = {}  # Словарь для хранения звуков
+
+    def load_sound(self, sound_id, sound_file):
+        """
+        Загрузить звук из файла и сохранить его в словаре.
+        :param sound_id: Уникальный идентификатор звука
+        :param sound_file: Путь к файлу звука
+        """
+        # Загрузка и обработка звука из файла (псевдокод)
+        sound_data = load_and_process_sound(sound_file)
+        self.sounds[sound_id] = sound_data
+
+    def play_sound(self, sound_id):
+        """
+        Воспроизвести звук по его идентификатору.
+        :param sound_id: Уникальный идентификатор звука
+        """
+        if sound_id in self.sounds:
+            # Воспроизведение звука (псевдокод)
+            play_sound(self.sounds[sound_id])
+
+    def stop_sound(self, sound_id):
+        """
+        Остановить воспроизведение звука по его идентификатору.
+        :param sound_id: Уникальный идентификатор звука
+        """
+        if sound_id in self.sounds:
+            # Остановка звука (псевдокод)
+            stop_sound(self.sounds[sound_id])
+
+    def set_volume(self, sound_id, volume):
+        """
+        Установить громкость звука по его идентификатору.
+        :param sound_id: Уникальный идентификатор звука
+        :param volume: Громкость (от 0.0 до 1.0)
+        """
+        if sound_id in self.sounds:
+            # Установка громкости звука (псевдокод)
+            set_sound_volume(self.sounds[sound_id], volume)
+
+# Добавим пример использования
+if __name__ == "__main__":
+    sound_manager = SoundManager()
+    sound_manager.load_sound("explosion", "explosion.wav")
+    sound_manager.load_sound("background_music", "bg_music.mp3")
+
+    sound_manager.play_sound("explosion")
+    sound_manager.play_sound("background_music")
