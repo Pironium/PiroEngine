@@ -1,0 +1,70 @@
+# PiroEngine Platform Compilation Support
+# Copyright (c) 2023 Pironium Inc. All rights reserved.
+
+# Define a function to compile the game for Windows platform
+function compileForWindows(gameName: string, outputPath: string) {
+    print("Compiling for Windows...")
+    # Add platform-specific compilation logic here
+    # ...
+    print("Game compiled for Windows and saved to: " + outputPath)
+}
+
+# Define a function to compile the game for Android platform
+function compileForAndroid(gameName: string, outputPath: string) {
+    print("Compiling for Android...")
+    # Add platform-specific compilation logic here
+    # ...
+    print("Game compiled for Android and saved to: " + outputPath)
+}
+
+# Define a function to compile the game for iPhone platform
+function compileForiPhone(gameName: string, outputPath: string) {
+    print("Compiling for iPhone...")
+    # Add platform-specific compilation logic here
+    # ...
+    print("Game compiled for iPhone and saved to: " + outputPath)
+}
+
+# Define a function to compile the game for macOS platform
+function compileForMacOS(gameName: string, outputPath: string) {
+    print("Compiling for macOS...")
+    # Add platform-specific compilation logic here
+    # ...
+    print("Game compiled for macOS and saved to: " + outputPath)
+}
+
+# Define a function to compile the game for Linux platform
+function compileForLinux(gameName: string, outputPath: string) {
+    print("Compiling for Linux...")
+    # Add platform-specific compilation logic here
+    # ...
+    print("Game compiled for Linux and saved to: " + outputPath)
+}
+
+# Define a function to compile the game for PS4 platform
+function compileForPS4(gameName: string, outputPath: string) {
+    print("Compiling for PS4...")
+    # Add platform-specific compilation logic here
+    # ...
+    print("Game compiled for PS4 and saved to: " + outputPath)
+}
+
+# Define a function to compile the game for Xbox One platform
+function compileForXboxOne(gameName: string, outputPath: string) {
+    print("Compiling for Xbox One...")
+    # Add platform-specific compilation logic here
+    # ...
+    print("Game compiled for Xbox One and saved to: " + outputPath)
+}
+
+# Usage example:
+gameName = "MyAwesomeGame"
+outputPath = "build/"
+
+compileForWindows(gameName, outputPath)
+compileForAndroid(gameName, outputPath)
+compileForiPhone(gameName, outputPath)
+compileForMacOS(gameName, outputPath)
+compileForLinux(gameName, outputPath)
+compileForPS4(gameName, outputPath)
+compileForXboxOne(gameName, outputPath)
