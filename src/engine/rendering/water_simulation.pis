@@ -1,0 +1,34 @@
+# PiroScript (.pis) - Water Simulation Functionality
+
+# Import required libraries
+import math
+import random
+
+# Define the WaterSimulation class
+class WaterSimulation:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.water_surface = [[0.0] * width for _ in range(height)]
+        self.damping = 0.99  # Damping factor for waves
+        self.time = 0
+
+    def update(self, delta_time):
+        self.time += delta_time
+        for y in range(self.height):
+            for x in range(self.width):
+                wave_amplitude = math.sin(x / 5.0 + self.time) + math.cos(y / 8.0 + self.time)
+                self.water_surface[y][x] = (self.water_surface[y][x] + wave_amplitude) * self.damping
+
+    def get_height_at(self, x, y):
+        if 0 <= x < self.width and 0 <= y < self.height:
+            return self.water_surface[y][x]
+        else:
+            return 0.0
+
+# Create an instance of WaterSimulation with a specific resolution
+water_simulation = WaterSimulation(width=128, height=128)
+
+# Usage example:
+# To get the height at a specific point (x, y):
+# height = water_simulation.get_height_at(x, y)
