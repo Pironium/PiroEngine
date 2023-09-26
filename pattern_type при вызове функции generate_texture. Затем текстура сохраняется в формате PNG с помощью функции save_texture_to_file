@@ -1,0 +1,49 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+
+def generate_texture(width, height, pattern_type='checkerboard'):
+    """
+    Generate a unique texture for game objects.
+
+    :param width: Width of the texture.
+    :param height: Height of the texture.
+    :param pattern_type: Type of pattern to generate (e.g., 'checkerboard', 'stripes').
+    :return: A numpy array representing the texture.
+    """
+    if pattern_type == 'checkerboard':
+        texture = np.zeros((height, width, 3), dtype=np.uint8)
+        block_size = width // 8
+        for i in range(0, height, block_size):
+            for j in range(0, width, block_size):
+                if (i // block_size + j // block_size) % 2 == 0:
+                    texture[i:i + block_size, j:j + block_size] = [255, 255, 255]
+        return texture
+
+    elif pattern_type == 'stripes':
+        texture = np.zeros((height, width, 3), dtype=np.uint8)
+        stripe_width = 10
+        for i in range(0, height, stripe_width):
+            texture[i:i + stripe_width, :, :] = [255, 0, 0] if i % (2 * stripe_width) == 0 else [0, 0, 255]
+        return texture
+
+    else:
+        raise ValueError("Unsupported pattern type")
+
+def save_texture_to_file(texture, filename):
+    """
+    Save the generated texture to a PNG file.
+
+    :param texture: The texture to save.
+    :param filename: The name of the output file.
+    """
+    image = Image.fromarray(texture)
+    image.save(filename)
+
+if __name__ == "__main__":
+    width = 512
+    height = 512
+    pattern_type = 'checkerboard'
+    texture = generate_texture(width, height, pattern_type)
+    output_filename = 'checkerboard_texture.png'
+    save_texture_to_file(texture, output_filename)
