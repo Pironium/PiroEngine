@@ -1,0 +1,20 @@
+# lighting_effects.pis
+
+# Функция для создания динамического света
+function create_dynamic_light(source_position, light_color, intensity):
+    # Эмулируем динамический свет, изменяющийся со временем
+    for frame in range(1, 60):
+        current_intensity = intensity * (1 - frame / 60)  # Уменьшаем интенсивность со временем
+        render_light(source_position, light_color, current_intensity)
+        wait(1)  # Ждем 1 кадр
+
+# Функция для рендеринга света
+function render_light(position, color, intensity):
+    # Здесь мы реализуем рендеринг света с заданными параметрами
+    # Это может включать в себя создание светящихся объектов или изменение текстур
+    # для создания световых эффектов
+    pass
+
+# Пример использования
+player_position = get_player_position()
+create_dynamic_light(player_position, (255, 255, 0), 0.8)  # Создаем желтый свет с интенсивностью 0.8 вокруг игрока
