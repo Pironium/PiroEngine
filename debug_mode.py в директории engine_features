@@ -1,0 +1,38 @@
+# engine_features/debug_mode.py
+
+class DebugMode:
+    def __init__(self):
+        self.memory_usage = 0
+        self.cpu_load = 0
+        self.gpu_load = 0
+
+    def update_memory_usage(self, memory_usage):
+        self.memory_usage = memory_usage
+
+    def update_cpu_load(self, cpu_load):
+        self.cpu_load = cpu_load
+
+    def update_gpu_load(self, gpu_load):
+        self.gpu_load = gpu_load
+
+    def get_memory_usage(self):
+        return self.memory_usage
+
+    def get_cpu_load(self):
+        return self.cpu_load
+
+    def get_gpu_load(self):
+        return self.gpu_load
+
+    def log_performance(self):
+        print(f"Memory Usage: {self.memory_usage} MB")
+        print(f"CPU Load: {self.cpu_load}%")
+        print(f"GPU Load: {self.gpu_load}%")
+
+# Example usage:
+if __name__ == "__main__":
+    debug_mode = DebugMode()
+    debug_mode.update_memory_usage(512)
+    debug_mode.update_cpu_load(25)
+    debug_mode.update_gpu_load(30)
+    debug_mode.log_performance()
