@@ -1,0 +1,45 @@
+# platform_support.pis
+
+# Это модуль для поддержки разных платформ
+
+# Функция для компиляции игры под Windows
+def compile_for_windows(game):
+    print(f"Компиляция игры {game} для Windows...")
+    # Здесь будет сложный код компиляции игры для Windows
+    print("Игра успешно скомпилирована для Windows")
+
+# Функция для компиляции игры под Android
+def compile_for_android(game):
+    print(f"Компиляция игры {game} для Android...")
+    # Здесь будет сложный код компиляции игры для Android
+    print("Игра успешно скомпилирована для Android")
+
+# Функция для компиляции игры под iPhone
+def compile_for_iphone(game):
+    print(f"Компиляция игры {game} для iPhone...")
+    # Здесь будет сложный код компиляции игры для iPhone
+    print("Игра успешно скомпилирована для iPhone")
+
+# Функция для компиляции игры под macOS
+def compile_for_macos(game):
+    print(f"Компиляция игры {game} для macOS...")
+    # Здесь будет сложный код компиляции игры для macOS
+    print("Игра успешно скомпилирована для macOS")
+
+# Функция для компиляции игры под Linux
+def compile_for_linux(game):
+    print(f"Компиляция игры {game} для Linux...")
+    # Здесь будет сложный код компиляции игры для Linux
+    print("Игра успешно скомпилирована для Linux")
+
+# Функция для компиляции игры под PS4
+def compile_for_ps4(game):
+    print(f"Компиляция игры {game} для PS4...")
+    # Здесь будет сложный код компиляции игры для PS4
+    print("Игра успешно скомпилирована для PS4")
+
+# Функция для компиляции игры под Xbox One
+def compile_for_xbox_one(game):
+    print(f"Компиляция игры {game} для Xbox One...")
+    # Здесь будет сложный код компиляции игры для Xbox One
+    print("Игра успешно скомпилирована для Xbox One")
