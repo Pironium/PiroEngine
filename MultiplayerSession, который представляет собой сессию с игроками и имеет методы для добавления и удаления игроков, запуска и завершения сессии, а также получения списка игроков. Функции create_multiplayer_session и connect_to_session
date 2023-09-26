@@ -1,0 +1,40 @@
+# engine_utilities/multiplayer_utils.py
+
+# Этот модуль предоставляет функции для работы с многопользовательскими играми.
+
+class MultiplayerSession:
+    def __init__(self, session_id):
+        self.session_id = session_id
+        self.players = []
+
+    def add_player(self, player_id):
+        # Добавляет игрока в текущую сессию.
+        self.players.append(player_id)
+
+    def remove_player(self, player_id):
+        # Удаляет игрока из текущей сессии.
+        if player_id in self.players:
+            self.players.remove(player_id)
+
+    def get_session_players(self):
+        # Возвращает список игроков в текущей сессии.
+        return self.players
+
+    def start_session(self):
+        # Начинает многопользовательскую сессию.
+        print(f"Начата многопользовательская сессия с ID {self.session_id}")
+
+    def end_session(self):
+        # Завершает многопользовательскую сессию.
+        print(f"Многопользовательская сессия с ID {self.session_id} завершена")
+
+
+def create_multiplayer_session(session_id):
+    # Создает новую многопользовательскую сессию.
+    return MultiplayerSession(session_id)
+
+def connect_to_session(session_id, player_id):
+    # Присоединяет игрока к существующей многопользовательской сессии.
+    session = MultiplayerSession(session_id)
+    session.add_player(player_id)
+    return session
