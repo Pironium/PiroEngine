@@ -1,0 +1,46 @@
+class WaterSurface {
+  constructor(width, height, waveSpeed, waveAmplitude) {
+    this.width = width;
+    this.height = height;
+    this.waveSpeed = waveSpeed;
+    this.waveAmplitude = waveAmplitude;
+    
+    // Инициализация массива вершин для водной поверхности
+    this.vertices = [];
+    for (let i = 0; i < width; i++) {
+      this.vertices.push([]);
+      for (let j = 0; j < height; j++) {
+        this.vertices[i].push({
+          x: i,
+          y: j,
+          height: 0, // Изначальная высота вершины
+        });
+      }
+    }
+  }
+
+  // Метод для обновления состояния водной поверхности
+  update(deltaTime) {
+    // Генерация волн на поверхности в зависимости от времени
+    const time = Date.now();
+    for (let i = 0; i < this.width; i++) {
+      for (let j = 0; j < this.height; j++) {
+        this.vertices[i][j].height = Math.sin(
+          (i / this.width) * this.waveAmplitude +
+          (j / this.height) * this.waveAmplitude +
+          time * this.waveSpeed
+        );
+      }
+    }
+  }
+
+  // Метод для рендеринга водной поверхности
+  render() {
+    // Рендеринг вершин и создание треугольников для отображения поверхности
+    // Этот код будет использовать движок для отрисовки водной поверхности
+    // с учетом текущего состояния вершин
+  }
+}
+
+// Экспорт класса для использования в других частях движка
+export default WaterSurface;
