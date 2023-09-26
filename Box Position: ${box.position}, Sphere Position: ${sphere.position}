@@ -1,0 +1,59 @@
+// 3DPhysicsEngine.js
+
+class PhysicsObject {
+  constructor(mass, position, velocity) {
+    this.mass = mass;
+    this.position = position;
+    this.velocity = velocity;
+  }
+
+  applyForce(force) {
+    // Рассчитываем ускорение объекта
+    const acceleration = force.divide(this.mass);
+    
+    // Обновляем скорость объекта на основе ускорения
+    this.velocity = this.velocity.add(acceleration);
+  }
+
+  updatePosition(deltaTime) {
+    // Обновляем позицию объекта на основе скорости
+    this.position = this.position.add(this.velocity.multiply(deltaTime));
+  }
+}
+
+class PhysicsWorld {
+  constructor(gravity) {
+    this.gravity = gravity;
+    this.objects = [];
+  }
+
+  addObject(object) {
+    // Добавляем объект в мир
+    this.objects.push(object);
+  }
+
+  simulate(deltaTime) {
+    // Применяем гравитационную силу ко всем объектам
+    const gravityForce = this.gravity.multiply(deltaTime);
+    this.objects.forEach((object) => {
+      object.applyForce(gravityForce);
+      object.updatePosition(deltaTime);
+    });
+  }
+}
+
+// Пример использования
+const world = new PhysicsWorld(new Vector3(0, -9.81, 0));
+
+const box = new PhysicsObject(2.0, new Vector3(0, 0, 0), new Vector3(0, 0, 0));
+const sphere = new PhysicsObject(1.0, new Vector3(1, 0, 0), new Vector3(0, 0, 0));
+
+world.addObject(box);
+world.addObject(sphere);
+
+// Симуляция физики
+const deltaTime = 0.01; // Шаг времени
+for (let i = 0; i < 100; i++) {
+  world.simulate(deltaTime);
+  console.log(`Box Position: ${box.position}, Sphere Position: ${sphere.position}`);
+}
