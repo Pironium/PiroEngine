@@ -1,0 +1,35 @@
+// engine_features/advertising_support.js
+
+/**
+ * PiroEngine Advertising Support Module
+ */
+
+class AdvertisingSupport {
+  constructor() {
+    this.adsEnabled = true;
+  }
+
+  /**
+   * Enable or disable ads in the engine.
+   * @param {boolean} enableAds - Set to true to enable ads, false to disable.
+   */
+  setAdsEnabled(enableAds) {
+    this.adsEnabled = enableAds;
+  }
+
+  /**
+   * Display an advertisement in the game.
+   * @param {string} adContent - The content of the advertisement.
+   */
+  displayAdvertisement(adContent) {
+    if (this.adsEnabled) {
+      // Code to display the ad content to the player
+      console.log(`Advertisement: ${adContent}`);
+    } else {
+      console.log("Ads are disabled.");
+    }
+  }
+}
+
+// Export the AdvertisingSupport class
+module.exports = AdvertisingSupport;
