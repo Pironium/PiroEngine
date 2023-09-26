@@ -1,0 +1,30 @@
+// engine/optimizations/graphics_optimization.cpp
+
+#include <iostream>
+#include <vector>
+
+// Function to perform NVIDIA-specific graphics optimization
+void nvidiaGraphicsOptimization() {
+    std::cout << "Performing NVIDIA graphics optimization..." << std::endl;
+    // Add complex optimization code for NVIDIA here
+}
+
+// Function to perform AMD-specific graphics optimization
+void amdGraphicsOptimization() {
+    std::cout << "Performing AMD graphics optimization..." << std::endl;
+    // Add complex optimization code for AMD here
+}
+
+// Main function to optimize graphics for both NVIDIA and AMD
+int main() {
+    std::vector<std::string> games = {"Game1", "Game2", "Game3"};
+
+    for (const std::string& game : games) {
+        std::cout << "Optimizing graphics for " << game << ":" << std::endl;
+        nvidiaGraphicsOptimization();
+        amdGraphicsOptimization();
+        std::cout << "Graphics optimization for " << game << " complete." << std::endl;
+    }
+
+    return 0;
+}
