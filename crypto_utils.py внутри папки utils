@@ -1,0 +1,47 @@
+# utils/crypto_utils.py
+
+import hashlib
+import base64
+import random
+
+def generate_salt(length=16):
+    """
+    Generates a random salt of the specified length.
+    """
+    salt = ''.join(random.choice('0123456789ABCDEF') for _ in range(length))
+    return salt
+
+def hash_password(password, salt=None):
+    """
+    Hashes a password using SHA-256 with an optional salt.
+    """
+    if not salt:
+        salt = generate_salt()
+    
+    password = f"{salt}{password}"
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+    return salt, hashed_password
+
+def obfuscate_build(build_data):
+    """
+    Obfuscates build data using a simple XOR cipher.
+    """
+    key = generate_salt(8)
+    encrypted_data = bytearray(build_data)
+    
+    for i in range(len(encrypted_data)):
+        encrypted_data[i] ^= ord(key[i % 8])
+    
+    return base64.b64encode(encrypted_data).decode()
+
+def deobfuscate_build(encrypted_data, key):
+    """
+    Deobfuscates build data using the provided key.
+    """
+    encrypted_data = base64.b64decode(encrypted_data)
+    decrypted_data = bytearray(encrypted_data)
+    
+    for i in range(len(decrypted_data)):
+        decrypted_data[i] ^= ord(key[i % 8])
+    
+    return decrypted_data.decode()
