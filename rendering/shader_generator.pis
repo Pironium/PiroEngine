@@ -1,0 +1,22 @@
+# PiroScript code for Shader Generator
+
+# Define a function to generate a random shader
+def generate_random_shader():
+    shader_code = """
+    // Random Shader
+    void main() {
+        vec2 uv = gl_FragCoord.xy / resolution.xy;
+        vec3 color = vec3(rand(), rand(), rand()); // Generate random RGB color
+        gl_FragColor = vec4(color, 1.0);
+    }
+    """
+    return shader_code
+
+# Save the generated shader to a file
+shader_code = generate_random_shader()
+file_name = "random_shader.pis"
+with open(file_name, "w") as shader_file:
+    shader_file.write(shader_code)
+
+# Print a message indicating success
+print("Random shader generated and saved as", file_name)
