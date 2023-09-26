@@ -1,0 +1,39 @@
+# Dynamic Sound Support for PiroEngine
+
+# Import the necessary modules
+import audioEngine.pis as audio
+
+# Define a class for dynamic sound management
+class DynamicSoundManager:
+    def __init__(self):
+        self.sound_objects = []
+
+    # Method to load a sound file
+    def load_sound(self, filename):
+        sound = audio.load_sound(filename)
+        self.sound_objects.append(sound)
+        return sound
+
+    # Method to play a sound
+    def play_sound(self, sound, position=(0, 0, 0)):
+        if sound in self.sound_objects:
+            audio.play_sound(sound, position)
+
+    # Method to stop all playing sounds
+    def stop_all_sounds(self):
+        audio.stop_all_sounds()
+
+# Create an instance of the DynamicSoundManager
+sound_manager = DynamicSoundManager()
+
+# Example usage:
+# Load sound files
+explosion_sound = sound_manager.load_sound("explosion.wav")
+background_music = sound_manager.load_sound("background_music.mp3")
+
+# Play sounds at specific positions
+sound_manager.play_sound(explosion_sound, position=(10, 5, 0))
+sound_manager.play_sound(background_music)
+
+# Stop all sounds
+sound_manager.stop_all_sounds()
