@@ -1,0 +1,25 @@
+# utils/model_maker_utils.py
+
+class ModelMakerUtils:
+    def __init__(self, model_name):
+        self.model_name = model_name
+
+    def load_model(self, model_path):
+        # Implement code to load a pre-trained model
+        pass
+
+    def train_model(self, training_data):
+        # Implement code to train the model with the given training data
+        pass
+
+    def generate_model(self, params):
+        # Implement code to generate the model using specified parameters
+        pass
+
+    def save_model(self, model_path):
+        # Implement code to save the trained model to the specified path
+        pass
+
+    def export_model_to_game(self, game_path):
+        # Implement code to export the model to the game for in-game use
+        pass
