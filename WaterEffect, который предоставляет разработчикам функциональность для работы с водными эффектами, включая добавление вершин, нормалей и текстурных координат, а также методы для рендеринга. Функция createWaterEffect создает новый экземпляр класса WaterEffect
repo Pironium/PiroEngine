@@ -1,0 +1,41 @@
+// Директория: engine/effects/
+// Название файла: water_effects.js
+
+class WaterEffect {
+  constructor() {
+    this.vertices = [];
+    this.normals = [];
+    this.uvs = [];
+    // Дополнительные параметры и инициализация
+  }
+
+  // Добавление вершины в водный эффект
+  addVertex(x, y, z) {
+    this.vertices.push(x, y, z);
+  }
+
+  // Добавление нормали для вершины
+  addNormal(nx, ny, nz) {
+    this.normals.push(nx, ny, nz);
+  }
+
+  // Добавление текстурной координаты
+  addUV(u, v) {
+    this.uvs.push(u, v);
+  }
+
+  // Остальные методы для создания и управления водным эффектом
+  // ...
+
+  // Рендеринг водного эффекта
+  render() {
+    // Код для рендеринга водного эффекта
+  }
+}
+
+function createWaterEffect() {
+  return new WaterEffect();
+}
+
+// Экспорт функции создания водного эффекта
+module.exports = createWaterEffect;
