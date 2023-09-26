@@ -1,0 +1,54 @@
+# PiroScript (.pis) code for the PiroEngine shader antogenerator
+
+import random
+
+def generate_shader():
+    shader_code = ""
+
+    # Generate shader header
+    shader_code += "#version 330 core\n"
+    shader_code += "out vec4 FragColor;\n"
+    
+    # Generate main function
+    shader_code += "void main()\n"
+    shader_code += "{\n"
+
+    # Generate shader body
+    for i in range(random.randint(10, 50)):
+        # Randomly select shader instruction
+        instruction = random.choice(["vec3", "vec4", "float"])
+        
+        # Generate variable name
+        var_name = f"var{i}"
+
+        # Generate shader instruction
+        shader_code += f"    {instruction} {var_name} = {generate_shader_instruction()};\n"
+
+    # Generate final color calculation
+    final_color = f"var{random.randint(0, i)}"
+    shader_code += f"    FragColor = vec4({final_color}, 1.0);\n"
+    
+    shader_code += "}\n"
+
+    return shader_code
+
+def generate_shader_instruction():
+    instruction_type = random.choice(["color", "math"])
+    
+    if instruction_type == "color":
+        return generate_color_instruction()
+    else:
+        return generate_math_instruction()
+
+def generate_color_instruction():
+    return f"vec3({random.random()}, {random.random()}, {random.random()})"
+
+def generate_math_instruction():
+    operators = ["+", "-", "*", "/"]
+    operator = random.choice(operators)
+    operand1 = f"var{random.randint(0, 9)}"
+    operand2 = f"var{random.randint(0, 9)}"
+    return f"{operand1} {operator} {operand2}"
+
+# Generate a random shader
+generated_shader = generate_shader()
