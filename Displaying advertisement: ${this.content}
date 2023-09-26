@@ -1,0 +1,55 @@
+// Директория: engine/features/
+// Название файла: advertising_support.js
+
+// Импортируем необходимые модули
+import { Game } from '../core/game';
+import { Player } from '../core/player';
+
+// Создаем класс для управления рекламными баннерами
+class AdvertisingManager {
+  constructor() {
+    this.banners = [];
+  }
+
+  // Метод для добавления рекламного баннера
+  addBanner(advertisement) {
+    this.banners.push(advertisement);
+  }
+
+  // Метод для отображения рекламных баннеров
+  showBanners() {
+    for (const banner of this.banners) {
+      banner.display();
+    }
+  }
+}
+
+// Создаем класс для представления рекламных баннеров
+class Advertisement {
+  constructor(content, duration) {
+    this.content = content;
+    this.duration = duration;
+  }
+
+  // Метод для отображения рекламного баннера
+  display() {
+    // Здесь мы бы реализовали логику отображения баннера
+    console.log(`Displaying advertisement: ${this.content}`);
+  }
+}
+
+// Добавляем поддержку рекламы в игру
+Game.prototype.advertisingManager = new AdvertisingManager();
+
+// Пример использования:
+const game = new Game();
+const player = new Player('Player 1');
+
+// Создаем рекламный баннер и добавляем его в игру
+const advertisement1 = new Advertisement('Buy our new game!', 10);
+game.advertisingManager.addBanner(advertisement1);
+
+// Отображаем рекламные баннеры при необходимости
+game.advertisingManager.showBanners();
+
+// Другие игровые операции...
