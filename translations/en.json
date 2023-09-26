@@ -1,0 +1,12 @@
+{
+  "welcome_message": "Welcome to PiroEngine!",
+  "settings": {
+    "language": "Language",
+    "sound": "Sound"
+  },
+  "button_labels": {
+    "start": "Start",
+    "options": "Options",
+    "exit": "Exit"
+  }
+}
