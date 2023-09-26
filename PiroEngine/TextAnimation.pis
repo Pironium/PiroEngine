@@ -1,0 +1,38 @@
+// PiroScript Code
+// Text Animation Support
+
+class TextAnimation {
+    var text: String
+    var duration: Double
+    var delay: Double
+    var animationType: AnimationType
+    
+    init(text: String, duration: Double, delay: Double, animationType: AnimationType) {
+        self.text = text
+        self.duration = duration
+        self.delay = delay
+        self.animationType = animationType
+    }
+    
+    func animate() {
+        // Code to animate the text based on animationType
+        // This can include various effects like fade in, slide in, etc.
+        // Use the duration and delay for timing
+        
+        switch animationType {
+        case .fadeIn:
+            // Implement text fading in animation here
+            break
+        case .slideIn:
+            // Implement text sliding in animation here
+            break
+        // Add more animation types as needed
+        }
+    }
+}
+
+enum AnimationType {
+    case fadeIn
+    case slideIn
+    // Add more animation types here
+}
