@@ -1,0 +1,75 @@
+# engine_functions/world_generator.py
+
+import random
+
+def generate_random_3d_world(seed):
+    """
+    Generates a random 3D world based on a given seed.
+
+    Args:
+        seed (int): Seed for random number generation.
+
+    Returns:
+        dict: A dictionary representing the generated world.
+    """
+    random.seed(seed)
+
+    world = {
+        "terrain": generate_terrain(),
+        "objects": generate_objects(),
+        "skybox": generate_skybox(),
+        "lighting": generate_lighting(),
+        "entities": generate_entities()
+    }
+
+    return world
+
+def generate_terrain():
+    """
+    Generates the terrain for the world.
+
+    Returns:
+        list: List of terrain objects.
+    """
+    # Implementation of terrain generation algorithm goes here
+    pass
+
+def generate_objects():
+    """
+    Generates objects within the world.
+
+    Returns:
+        list: List of objects.
+    """
+    # Implementation of object generation algorithm goes here
+    pass
+
+def generate_skybox():
+    """
+    Generates the skybox for the world.
+
+    Returns:
+        dict: Skybox properties.
+    """
+    # Implementation of skybox generation algorithm goes here
+    pass
+
+def generate_lighting():
+    """
+    Generates lighting settings for the world.
+
+    Returns:
+        dict: Lighting properties.
+    """
+    # Implementation of lighting generation algorithm goes here
+    pass
+
+def generate_entities():
+    """
+    Generates entities within the world.
+
+    Returns:
+        list: List of entities.
+    """
+    # Implementation of entity generation algorithm goes here
+    pass
