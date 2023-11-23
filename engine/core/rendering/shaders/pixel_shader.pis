@@ -1,0 +1,66 @@
+# PiroScript code for a complex pixel shader with advanced lighting effects
+
+# Define the main function for the pixel shader
+function mainPixelShader(input: PixelInput) -> Color {
+    # Perform basic lighting calculations
+    ambientLight = calculateAmbientLight(input);
+    diffuseLight = calculateDiffuseLight(input);
+    specularLight = calculateSpecularLight(input);
+
+    # Combine lighting components to get the final color
+    finalColor = ambientLight + diffuseLight + specularLight;
+
+    # Apply post-processing effects
+    finalColor = applyPostProcessing(finalColor);
+
+    # Output the final color
+    return finalColor;
+}
+
+# Function to calculate ambient light contribution
+function calculateAmbientLight(input: PixelInput) -> Color {
+    ambientCoefficient = 0.2; # Adjustable coefficient for ambient light intensity
+    ambientColor = getAmbientColor(); # Retrieve ambient light color from the environment
+
+    return ambientCoefficient * ambientColor;
+}
+
+# Function to calculate diffuse light contribution
+function calculateDiffuseLight(input: PixelInput) -> Color {
+    diffuseCoefficient = 0.7; # Adjustable coefficient for diffuse light intensity
+    lightDirection = normalize(getLightDirection()); # Normalize light direction vector
+    surfaceNormal = normalize(input.normal); # Normalize surface normal vector
+
+    # Calculate the diffuse reflection using Lambert's cosine law
+    diffuseReflection = max(dot(surfaceNormal, lightDirection), 0.0);
+
+    diffuseColor = getDiffuseColor(); # Retrieve diffuse light color from the environment
+
+    return diffuseCoefficient * diffuseReflection * diffuseColor;
+}
+
+# Function to calculate specular light contribution
+function calculateSpecularLight(input: PixelInput) -> Color {
+    specularCoefficient = 0.5; # Adjustable coefficient for specular light intensity
+    lightDirection = normalize(getLightDirection()); # Normalize light direction vector
+    surfaceNormal = normalize(input.normal); # Normalize surface normal vector
+    viewDirection = normalize(getViewDirection()); # Normalize view direction vector
+
+    # Calculate the half vector for specular reflection
+    halfVector = normalize(lightDirection + viewDirection);
+
+    # Calculate the specular reflection using the Phong reflection model
+    specularReflection = pow(max(dot(surfaceNormal, halfVector), 0.0), getSpecularExponent());
+
+    specularColor = getSpecularColor(); # Retrieve specular light color from the environment
+
+    return specularCoefficient * specularReflection * specularColor;
+}
+
+# Function to apply post-processing effects
+function applyPostProcessing(color: Color) -> Color {
+    # Implement custom post-processing effects here
+    # Example: color = grayscale(color);
+
+    return color;
+}
